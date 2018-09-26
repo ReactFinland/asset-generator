@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "TODO",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node ./antwar.bootstrap.js develop",
     "lint": "eslint . --ignore-path .gitignore --fix",
