@@ -1,9 +1,10 @@
 import React from "react";
 import Papa from "papaparse";
 import Dropzone from "react-dropzone";
+import { flatten, chunk } from "lodash";
+
 import Logo from "./assets/logo.svg";
 import styles from "./css/badges.scss";
-import { flatten, chunk } from "lodash";
 
 const emptyBadges = 10;
 const emptyOrgBadges = 5;
