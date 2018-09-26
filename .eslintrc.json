@@ -5,10 +5,15 @@
     "es6": true,
     "node": true
   },
-  "extends": ["eslint:recommended", "prettier"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "latest"
+    }
   },
   "parser": "babel-eslint",
   "parserOptions": {
