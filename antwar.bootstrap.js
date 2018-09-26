@@ -3,13 +3,19 @@
 require("@babel/register");
 
 const antwar = require("antwar");
-const antwarConfig = require("./antwar.config.js");
 const environment = process.argv[2];
+
+/*console.log(
+  require.resolve("./antwar.config"),
+  require.resolve("./webpack.config")
+);*/
 
 antwar[environment]({
   environment,
-  antwar: antwarConfig,
-  webpack: require("./webpack.config")
+  configurationPaths: {
+    antwar: require.resolve("./antwar.config"),
+    webpack: require.resolve("./webpack.config")
+  }
 })
   .then(() => {
     if (environment !== "build") {
