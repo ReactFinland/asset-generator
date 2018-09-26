@@ -1,3 +1,5 @@
+import "@babel/polyfill";
+
 import React from "react";
 import Papa from "papaparse";
 import Dropzone from "react-dropzone";
@@ -51,11 +53,13 @@ const convertData = (tickets, passwords) => {
       twitter: i["Tags"] ? `@${i["Tags"]}` : null
     }))
     .concat(Array(emptyOrgBadges).fill(getEmptyData("Volunteer")))
-    .concat(Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("Attendee")))
-    .map((ticket, idx) => ({
+    .concat(
+      Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("Attendee"))
+    );
+  /*.map((ticket, idx) => ({
       ...ticket,
       ...passwords[idx]
-    }));
+    }))*/
 };
 
 const Badge = ({ ticket }) => (
@@ -206,9 +210,7 @@ class Badges extends React.Component {
             </Dropzone>
           </div>
         )}
-        {tickets.length > 0 &&
-          passwords.length > 0 &&
-          this.renderBadges(tickets, passwords)}
+        {tickets.length > 0 && this.renderBadges(tickets, [])}
       </section>
     );
   }

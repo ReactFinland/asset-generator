@@ -2,6 +2,9 @@
 // Needed for JSX compilation to work
 require("@babel/register");
 
+// Needed by generators
+require("@babel/polyfill");
+
 const antwar = require("antwar");
 const environment = process.argv[2];
 
