@@ -36,7 +36,7 @@ const convertData = (tickets, passwords) => {
   // Ensure all pages are filled with badges
   const emptyBadgesFill =
     badgesPerPage -
-    (validTickets.length + emptyBadges + emptyOrgBadges) % badgesPerPage;
+    ((validTickets.length + emptyBadges + emptyOrgBadges) % badgesPerPage);
   return validTickets
     .map(i => ({
       firstName: i["Ticket First Name"],

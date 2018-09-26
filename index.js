@@ -1,7 +1,9 @@
-
+/* eslint no-console: "off" */
 (async () => {
+  const puppeteer = require("puppeteer");
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+
   await page.goto("http://localhost:8000/badges");
   try {
     await page.pdf({
