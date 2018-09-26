@@ -194,6 +194,8 @@ class Badges extends React.Component {
                 <p>Found {tickets.length} tickets!</p>
               )}
             </Dropzone>
+            {/*
+            Commented out for now since passwords may be added later.
             <Dropzone
               name="passwords"
               multiple={false}
@@ -208,6 +210,7 @@ class Badges extends React.Component {
                 <p>Found {passwords.length} passwords!</p>
               )}
             </Dropzone>
+              */}
           </div>
         )}
         {tickets.length > 0 && this.renderBadges(tickets, [])}
