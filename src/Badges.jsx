@@ -71,12 +71,12 @@ const SplitPage = ({ tickets }) => {
     <div>
       <section className={"sheet " + styles.page}>
         {tickets.map((ticket, idx) => (
-          <Badge ticket={ticket} key={"front-" + idx} />
+          <Badge {...ticket} key={"front-" + idx} />
         ))}
       </section>
       <section className={"sheet " + styles.page}>
         {reverse.map((ticket, idx) => (
-          <Badge ticket={ticket} key={"back-" + idx} />
+          <Badge {...ticket} key={"back-" + idx} />
         ))}
       </section>
     </div>

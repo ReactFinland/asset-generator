@@ -3,16 +3,24 @@ import React from "react";
 import Logo from "./assets/logo.svg";
 import styles from "./css/badges.scss";
 
-const Badge = ({ ticket }) => (
-  <section className={styles[ticket.type]}>
+const Badge = ({
+  type,
+  firstName,
+  lastName,
+  twitter,
+  company,
+  username,
+  password
+}) => (
+  <section className={styles[type]}>
     <img src={Logo} alt="ReasonConf 2018" className={styles.logo} />
     <div className={styles.content}>
       <h2 className={styles.name}>
-        <span className={styles.firstName}>{ticket.firstName}</span>{" "}
-        <span className={styles.lastName}>{ticket.lastName}</span>
+        <span className={styles.firstName}>{firstName}</span>{" "}
+        <span className={styles.lastName}>{lastName}</span>
       </h2>
-      {ticket.twitter && <h3 className={styles.twitter}>{ticket.twitter}</h3>}
-      {ticket.company && <p className={styles.company}>{ticket.company}</p>}
+      {twitter && <h3 className={styles.twitter}>{twitter}</h3>}
+      {company && <p className={styles.company}>{company}</p>}
     </div>
     <section className={styles.footer}>
       <div className={styles.footerLeft}>
@@ -34,11 +42,11 @@ const Badge = ({ ticket }) => (
         </dl>
         <dl>
           <dt>User.</dt>
-          <dd>{ticket.username}</dd>
+          <dd>{username}</dd>
         </dl>
         <dl>
           <dt>Pass.</dt>
-          <dd>{ticket.password}</dd>
+          <dd>{password}</dd>
         </dl>
       </div>
     </section>
