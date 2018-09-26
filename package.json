@@ -4,6 +4,7 @@
   "description": "TODO",
   "main": "index.js",
   "scripts": {
+    "start": "node ./antwar.bootstrap.js develop",
     "lint": "eslint . --ignore-path .gitignore --fix",
     "test": "npm run lint"
   },
