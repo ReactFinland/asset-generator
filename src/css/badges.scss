@@ -26,7 +26,7 @@
 
 body {
   font-family: "Finlandica", sans-serif;
-  background: #fefefe;
+  background: #eee;
 }
 
 :global(.sheet) {
@@ -45,7 +45,7 @@ body {
   justify-content: center;
   margin-bottom: 2vh;
   width: 100%;
-  height: 40vh;
+  height: 20vh;
   border: 2px dashed #000;
   border-radius: 8px;
 }
@@ -128,8 +128,8 @@ body {
 
 .logo {
   position: relative;
-  margin: 1.25cm 1cm 0.25cm;
-  width: calc(50% - 2cm);
+  margin: 0.75cm 1cm 0.25cm;
+  width: calc(100% - 2cm);
 }
 
 .content {
