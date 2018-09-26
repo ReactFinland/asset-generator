@@ -7,6 +7,7 @@ import { flatten, chunk } from "lodash";
 
 import styles from "./css/badges.scss";
 import Badge from "./Badge.jsx";
+import DummyBadge from "./DummyBadge.jsx";
 
 const emptyBadges = 10;
 const emptyOrgBadges = 5;
@@ -171,7 +172,7 @@ class Badges extends React.Component {
               */}
           </div>
         )}
-        {tickets.length > 0 && this.renderBadges(tickets, [])}
+        {tickets.length > 0 ? this.renderBadges(tickets, []) : <DummyBadge />}
       </section>
     );
   }
