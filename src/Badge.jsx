@@ -16,10 +16,11 @@ const Badge = ({
     <img src={Logo} alt="ReasonConf 2018" className={styles.logo} />
     <div className={styles.content}>
       <h2 className={styles.name}>
-        <span className={styles.firstName}>{firstName}</span>{" "}
-        <span className={styles.lastName}>{lastName}</span>
+        <span className={styles.firstName}>
+          {firstName} {lastName}
+        </span>
       </h2>
-      {twitter && <h3 className={styles.twitter}>{twitter}</h3>}
+      {twitter && <h3 className={styles.twitter}>@{twitter}</h3>}
       {company && <p className={styles.company}>{company}</p>}
     </div>
     <section className={styles.footer}>

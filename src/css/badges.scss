@@ -13,7 +13,7 @@
 }
 
 @font-face {
-  font-family: "Finlandica";
+  font-family: "Finlandica Bold";
   src: url("../assets/fonts/finlandica-bold.eot");
   src: url("../assets/fonts/finlandica-bold.eot?#iefix")
       format("embedded-opentype"),
@@ -156,6 +156,7 @@ body {
 }
 
 h3.twitter {
+  font-family: "Finlandica Bold", sans-serif;
   margin-top: 0.5em !important;
   font-size: 125% !important;
 }
