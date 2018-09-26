@@ -9,7 +9,7 @@ module.exports = () => ({
         use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
-        test: /\.js$/,
+        test: /\.js(x)$/,
         use: "babel-loader",
         include: [path.join(__dirname, "src")]
       },
