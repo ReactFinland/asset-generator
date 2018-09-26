@@ -1,6 +1,6 @@
 @import "./variables.scss";
 
-:global(.sheet) {
+.sheet {
   display: flex;
   flex-wrap: wrap;
   height: 11.5in !important; // Adjust for Safari print mode
@@ -10,7 +10,8 @@
   }
 }
 
-.dropzone {
+.dropzone,
+.dropzoneHover {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,11 +23,13 @@
 }
 
 .dropzoneHover {
-  composes: dropzone;
   border-color: $secondaryColor;
 }
 
-.badge {
+.badge,
+.Attendee,
+.Volunteer,
+.Organizer {
   position: relative;
   margin: auto;
   padding: 0;
@@ -64,14 +67,8 @@
   }
 }
 
-.Attendee {
-  composes: badge;
-}
-
 .Volunteer,
 .Organizer {
-  composes: badge;
-
   &::before {
     position: absolute;
     left: -5%;
