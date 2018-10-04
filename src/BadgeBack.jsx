@@ -55,38 +55,37 @@ const BadgeBack = ({
   </section>
 );
 
-export default connect(`
-  query PageQuery($conferenceId: ID!) {
-    conference(id: $conferenceId) {
-      schedules {
-        day
-        description
-        intervals {
-          begin
-          end
-          sessions {
-            type
-            interval {
-              begin
-              end
-            }
-            title
-            description
+export default connect(
+  `
+  query PageQuery($conferenceId: ID!, $day: String!) {
+    schedule(conferenceId: $conferenceId, day: $day) {
+      day
+      description
+      intervals {
+        begin
+        end
+        sessions {
+          type
+          interval {
+            begin
+            end
+          }
+          title
+          description
 
-            ... on Workshop {
-              speakers {
-                name
-                image {
-                  url
-                }
+          ... on Workshop {
+            speakers {
+              name
+              image {
+                url
               }
             }
-            ... on Talk {
-              speakers {
-                name
-                image {
-                  url
-                }
+          }
+          ... on Talk {
+            speakers {
+              name
+              image {
+                url
               }
             }
           }
@@ -94,4 +93,6 @@ export default connect(`
       }
     }
   }
-`)(BadgeBack);
+`,
+  () => ({ day: "2018-10-19" })
+)(BadgeBack);
