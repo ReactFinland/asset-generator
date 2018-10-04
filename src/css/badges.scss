@@ -39,6 +39,17 @@ body {
   }
 }
 
+.dummyBadges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dummyBadges > * {
+  display: inline-block;
+  margin: 2em !important;
+}
+
 .dropzone {
   display: flex;
   align-items: center;

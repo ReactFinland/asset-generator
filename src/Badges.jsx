@@ -6,8 +6,8 @@ import Dropzone from "react-dropzone";
 import { flatten, chunk } from "lodash";
 
 import styles from "./css/badges.scss";
-import Badge from "./Badge.jsx";
-import DummyBadge from "./DummyBadge.jsx";
+import BadgeFront from "./BadgeFront.jsx";
+import BadgeBack from "./BadgeBack.jsx";
 
 const emptyBadges = 10;
 const emptyOrgBadges = 5;
@@ -72,12 +72,12 @@ const SplitPage = ({ tickets }) => {
     <div>
       <section className={"sheet " + styles.page}>
         {tickets.map((ticket, idx) => (
-          <Badge {...ticket} key={"front-" + idx} />
+          <BadgeFront {...ticket} key={"front-" + idx} />
         ))}
       </section>
       <section className={"sheet " + styles.page}>
         {reverse.map((ticket, idx) => (
-          <Badge {...ticket} key={"back-" + idx} />
+          <BadgeBack {...ticket} key={"back-" + idx} />
         ))}
       </section>
     </div>
@@ -172,7 +172,30 @@ class Badges extends React.Component {
               */}
           </div>
         )}
-        {tickets.length > 0 ? this.renderBadges(tickets, []) : <DummyBadge />}
+        {tickets.length > 0 ? (
+          this.renderBadges(tickets, [])
+        ) : (
+          <div className={styles.dummyBadges}>
+            <BadgeFront
+              type="Attendee"
+              firstName="John"
+              lastName="Doe"
+              twitter="johndoe"
+              company="John Doe Enterprises"
+              username="johnno"
+              password="swordfish"
+            />
+            <BadgeBack
+              type="Attendee"
+              firstName="John"
+              lastName="Doe"
+              twitter="johndoe"
+              company="John Doe Enterprises"
+              username="johnno"
+              password="swordfish"
+            />
+          </div>
+        )}
       </section>
     );
   }

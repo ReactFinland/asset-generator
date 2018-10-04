@@ -3,7 +3,7 @@ import React from "react";
 import Logo from "./assets/logo.svg";
 import styles from "./css/badges.scss";
 
-const Badge = ({
+const BadgeFront = ({
   type,
   firstName,
   lastName,
@@ -54,4 +54,4 @@ const Badge = ({
   </section>
 );
 
-export default Badge;
+export default BadgeFront;
