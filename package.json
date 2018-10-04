@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/ReactFinland/badge-generator#readme",
   "dependencies": {
+    "graphql-request": "^1.8.2",
     "lodash": "^4.17.11",
     "papaparse": "^4.6.0",
     "react": "^16.5.2",

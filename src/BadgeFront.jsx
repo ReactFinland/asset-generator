@@ -13,7 +13,7 @@ const BadgeFront = ({
   password
 }) => (
   <section className={styles[type]}>
-    <img src={Logo} alt="ReasonConf 2018" className={styles.logo} />
+    <img src={Logo} alt="GraphQL Finland 2018" className={styles.logo} />
     <div className={styles.content}>
       <h2 className={styles.name}>
         <span className={styles.firstName}>

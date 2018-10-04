@@ -1,4 +1,5 @@
 import React from "react";
+import connect from "./connect";
 
 import Logo from "./assets/logo.svg";
 import styles from "./css/badges.scss";
@@ -13,7 +14,7 @@ const BadgeBack = ({
   password
 }) => (
   <section className={styles[type]}>
-    <img src={Logo} alt="ReasonConf 2018" className={styles.logo} />
+    <img src={Logo} alt="GraphQL Finland 2018" className={styles.logo} />
     <div className={styles.content}>
       <h2 className={styles.name}>
         <span className={styles.firstName}>
@@ -54,4 +55,43 @@ const BadgeBack = ({
   </section>
 );
 
-export default BadgeBack;
+export default connect(`
+  query PageQuery($conferenceId: ID!) {
+    conference(id: $conferenceId) {
+      schedules {
+        day
+        description
+        intervals {
+          begin
+          end
+          sessions {
+            type
+            interval {
+              begin
+              end
+            }
+            title
+            description
+
+            ... on Workshop {
+              speakers {
+                name
+                image {
+                  url
+                }
+              }
+            }
+            ... on Talk {
+              speakers {
+                name
+                image {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`)(BadgeBack);
