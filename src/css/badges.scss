@@ -95,6 +95,7 @@ body {
   dl,
   dt,
   dd {
+    display: inline;
     margin: 0;
     padding: 0;
   }
@@ -146,9 +147,9 @@ body {
 .content {
   position: relative;
   margin: 0;
-  padding: 1.25cm 1cm;
+  padding: 1cm 1cm;
   background-color: $bgColor;
-  height: 8.25cm;
+  height: 11.9cm;
   clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
   z-index: 1;
 }
@@ -210,4 +211,42 @@ h3.twitter {
 .footerRight {
   position: relative;
   //text-align: center;
+}
+
+.badgeBack {
+  padding-left: 0.5cm;
+  padding-right: 0.5cm;
+  height: 100%;
+}
+
+.schedule {
+  display: flex !important;
+  flex-flow: row;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: visible;
+}
+.scheduleTitle {
+  flex: 0 0 30%;
+  overflow: hidden;
+}
+.scheduleDefinition {
+  flex: 0 0 70%;
+  margin-left: auto;
+  text-align: left;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 65%;
+}
+.sessionIntervalTitle {
+  display: inline;
+}
+
+.breakfast,
+.coffee_break,
+.party,
+.lunch {
+  color: $secondaryColor;
 }

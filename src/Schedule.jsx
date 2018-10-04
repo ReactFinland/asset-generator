@@ -1,25 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ScheduleIcon from "./ScheduleIcon.jsx";
-import SessionSpeakers from "./SessionSpeakers.jsx";
+import styles from "./css/badges.scss";
 
 const Schedule = ({ intervals }) =>
   intervals ? (
-    <dl className="schedule">
+    <dl className={styles.schedule}>
       {intervals.map(({ begin, end, sessions }, i) => [
-        <dt className={`schedule--title ${getType(sessions)}`} key={`dt-${i}`}>
+        <dt
+          className={`${styles.scheduleTitle} ${styles[getType(sessions)]}`}
+          key={`dt-${i}`}
+        >
           {begin}–{end}
         </dt>,
-        <dd className="schedule--definition" key={`dd-${i}`}>
+        <dd className={styles.scheduleDefinition} key={`dd-${i}`}>
           {sessions.map(({ title, type, speakers }, i) => (
-            <div className="session" key={`session-${i}`}>
-              <AnchorTitle
-                key={i}
-                title={title}
-                type={type}
-                speakers={speakers}
-              />
-            </div>
+            <SessionTitle
+              key={i}
+              title={title}
+              type={type}
+              speakers={speakers}
+            />
           ))}
         </dd>
       ])}
@@ -40,13 +41,23 @@ const titlePropTypes = {
   speakers: PropTypes.array
 };
 
-const AnchorTitle = ({ title, type, speakers }) => (
-  <h3>
-    <ScheduleIcon type={type} />
-    {title} {title && speakers && "—"}{" "}
-    {speakers && <SessionSpeakers key={`speaker-names`} speakers={speakers} />}
+const SessionTitle = ({ title, type, speakers }) => (
+  <h3 className={styles.sessionIntervalTitle}>
+    {type === "COFFEE_BREAK" ||
+    type === "PARTY" ||
+    type === "LUNCH" ||
+    type === "BREAKFAST" ? (
+      <>
+        <ScheduleIcon type={type} />
+      </>
+    ) : (
+      <>
+        <ScheduleIcon type={type} />
+        {title}
+      </>
+    )}
   </h3>
 );
-AnchorTitle.propTypes = titlePropTypes;
+SessionTitle.propTypes = titlePropTypes;
 
 export default Schedule;

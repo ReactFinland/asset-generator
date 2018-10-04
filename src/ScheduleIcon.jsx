@@ -4,7 +4,7 @@ import scheduleTypes from "./schedule-types";
 
 const ScheduleIcon = ({ type }) =>
   scheduleTypes[type] ? (
-    <abbr title={scheduleTypes[type].title}>{scheduleTypes[type].icon}</abbr>
+    <span title={scheduleTypes[type].title}>{scheduleTypes[type].icon}</span>
   ) : null;
 ScheduleIcon.propTypes = {
   type: PropTypes.string
