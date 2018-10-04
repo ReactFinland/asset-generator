@@ -138,7 +138,7 @@ class Badges extends React.Component {
       <section>
         {(tickets.length === 0 || passwords.length === 0) && (
           <div className="container container_centered">
-            <h2>ReasonConf Badges Generator</h2>
+            <h2>Conference Badge Generator</h2>
             <Dropzone
               name="tickets"
               multiple={false}
