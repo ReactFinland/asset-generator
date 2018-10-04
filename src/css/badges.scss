@@ -140,14 +140,14 @@ body {
 
 .logo {
   position: relative;
-  margin: 0.75cm 1cm 0.25cm;
+  margin: 0.5cm 1cm -0.5cm;
   width: calc(100% - 2cm);
 }
 
 .content {
   position: relative;
   margin: 0;
-  padding: 1cm 1cm;
+  padding: 0.5cm 1cm;
   background-color: $bgColor;
   height: 11.9cm;
   clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
@@ -210,7 +210,6 @@ h3.twitter {
 .footerLeft,
 .footerRight {
   position: relative;
-  //text-align: center;
 }
 
 .badgeBack {
@@ -249,4 +248,29 @@ h3.twitter {
 .party,
 .lunch {
   color: $secondaryColor;
+}
+
+.sponsorsList {
+  width: 120%;
+  margin-left: -0.75cm;
+  text-align: center;
+}
+.sponsorsLogo {
+  margin: 0.2cm;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+}
+.goldSponsors .sponsorsLogo {
+  max-height: 2cm;
+  max-width: 4cm;
+  margin-bottom: 0.5cm;
+}
+.silverSponsors .sponsorsLogo {
+  max-height: 2.5cm;
+  max-width: 2.5cm;
+}
+.bronzeSponsors .sponsorsLogo {
+  max-height: 1.2cm;
+  max-width: 2.5cm;
 }

@@ -1,4 +1,7 @@
 import React from "react";
+import connect from "./connect";
+import Contacts from "./Contacts.jsx";
+import Sponsor from "./Sponsor.jsx";
 
 import Logo from "./assets/logo.svg";
 import styles from "./css/badges.scss";
@@ -9,49 +12,71 @@ const BadgeFront = ({
   lastName,
   twitter,
   company,
-  username,
-  password
+  conference: {
+    goldSponsors = [],
+    silverSponsors = [],
+    bronzeSponsors = []
+  } = {}
 }) => (
   <section className={styles[type]}>
     <img src={Logo} alt="GraphQL Finland 2018" className={styles.logo} />
     <div className={styles.content}>
+      {twitter && <h3 className={styles.twitter}>@{twitter}</h3>}
       <h2 className={styles.name}>
         <span className={styles.firstName}>
           {firstName} {lastName}
         </span>
       </h2>
-      {twitter && <h3 className={styles.twitter}>@{twitter}</h3>}
       {company && <p className={styles.company}>{company}</p>}
+      <div className={styles.goldSponsors}>
+        <section className={styles.sponsorsList}>
+          <Contacts items={goldSponsors} render={Sponsor} />
+        </section>
+      </div>
+      <div className={styles.silverSponsors}>
+        <section className={styles.sponsorsList}>
+          <Contacts items={silverSponsors} render={Sponsor} />
+        </section>
+      </div>
+      <div className={styles.bronzeSponsors}>
+        <section className={styles.sponsorsList}>
+          <Contacts items={bronzeSponsors} render={Sponsor} />
+        </section>
+      </div>
     </div>
-    <section className={styles.footer}>
-      <div className={styles.footerLeft}>
-        <h4>ImpactHub</h4>
-        <dl>
-          <dt>WLAN</dt>
-          <dd>ImpactHubVienna</dd>
-        </dl>
-        <dl>
-          <dt>Pass.</dt>
-          <dd>WeLoveImpact</dd>
-        </dl>
-      </div>
-      <div className={styles.footerRight}>
-        <h4>TU Wien</h4>
-        <dl>
-          <dt>WLAN</dt>
-          <dd>tunetguest</dd>
-        </dl>
-        <dl>
-          <dt>User.</dt>
-          <dd>{username}</dd>
-        </dl>
-        <dl>
-          <dt>Pass.</dt>
-          <dd>{password}</dd>
-        </dl>
-      </div>
-    </section>
   </section>
 );
 
-export default BadgeFront;
+const sponsorFragment = `
+  fragment SponsorFragment on Contact {
+    name
+    social {
+      homepage
+    }
+    about
+    image {
+      url
+    }
+  }
+`;
+
+export default connect(
+  `
+  query RootQuery($conferenceId: ID!) {
+    conference(id: $conferenceId) {
+      goldSponsors {
+        ...SponsorFragment
+      }
+      silverSponsors {
+        ...SponsorFragment
+      }
+      bronzeSponsors {
+        ...SponsorFragment
+      }
+    }
+  }
+
+  ${sponsorFragment}
+`,
+  () => ({ day: "2018-10-19" })
+)(BadgeFront);
