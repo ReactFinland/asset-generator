@@ -3,7 +3,7 @@ import "@babel/polyfill";
 import React from "react";
 import Papa from "papaparse";
 import Dropzone from "react-dropzone";
-import { flatten, chunk } from "lodash";
+import { flatten, chunk, trimStart, upperFirst } from "lodash";
 
 import styles from "./css/badges.scss";
 import BadgeFront from "./BadgeFront.jsx";
@@ -23,16 +23,19 @@ const getEmptyData = type => ({
   twitter: null
 });
 
+const getName = name => upperFirst(name);
+const getTwitter = twitter => trimStart(twitter, "'@");
+
 const getType = type => {
   switch (type) {
     case "Organizer": {
-      return "Organizer";
+      return "organizer";
     }
     case "Volunteer": {
-      return "Volunteer";
+      return "volunteer";
     }
     default:
-      return "Attendee";
+      return "attendee";
   }
 };
 
@@ -42,23 +45,25 @@ const convertData = (tickets, passwords) => {
   const emptyBadgesFill =
     badgesPerPage -
     ((validTickets.length + emptyBadges + emptyOrgBadges) % badgesPerPage);
-  return validTickets
-    .map(i => ({
-      firstName: i["Ticket First Name"],
-      lastName: i["Ticket Last Name"],
-      company:
-        i["Ticket Company Name"] &&
-        (!i["Ticket Full Name"].includes(i["Ticket Company Name"]) &&
-          !i["Ticket Company Name"].includes(i["Ticket Full Name"]))
-          ? i["Ticket Company Name"]
-          : null, // Remove company if it's same as the name
-      type: getType(i["Ticket"]),
-      twitter: i["Tags"] ? `@${i["Tags"]}` : null
-    }))
-    .concat(Array(emptyOrgBadges).fill(getEmptyData("Volunteer")))
-    .concat(
-      Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("Attendee"))
-    );
+  return (
+    validTickets
+      .map(i => ({
+        firstName: getName(i["Ticket First Name"] || i["First Name"]),
+        lastName: getName(i["Ticket Last Name"] || i["Last Name"]),
+        company:
+          i["Ticket Company Name"] &&
+          (!i["Ticket Full Name"].includes(i["Ticket Company Name"]) &&
+            !i["Ticket Company Name"].includes(i["Ticket Full Name"]))
+            ? i["Ticket Company Name"]
+            : null, // Remove company if it's same as the name
+        type: getType(i["Ticket"] || i["Ticket Type"]),
+        twitter: getTwitter(i["Twitter"]) || "" // i["Tags"] ? `@${i["Tags"]}` : null
+      }))
+      // .concat(Array(emptyOrgBadges).fill(getEmptyData("Volunteer")))
+      .concat(
+        Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("Attendee"))
+      )
+  );
   /*.map((ticket, idx) => ({
       ...ticket,
       ...passwords[idx]
@@ -140,7 +145,7 @@ class Badges extends React.Component {
       <section>
         {(tickets.length === 0 || passwords.length === 0) && (
           <div className="container container_centered">
-            <h2>Conference Badge Generator</h2>
+            <h2 className={styles.appTitle}>Conference Badge Generator</h2>
             <Dropzone
               name="tickets"
               multiple={false}

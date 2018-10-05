@@ -50,6 +50,12 @@ body {
   margin: 2em !important;
 }
 
+.appTitle {
+  @media print {
+    display: none;
+  }
+}
+
 .dropzone {
   display: flex;
   align-items: center;
@@ -59,6 +65,9 @@ body {
   height: 20vh;
   border: 2px dashed #000;
   border-radius: 8px;
+  @media print {
+    display: none;
+  }
 }
 
 .dropzoneHover {
