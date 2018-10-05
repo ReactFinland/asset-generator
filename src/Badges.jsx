@@ -181,7 +181,7 @@ class Badges extends React.Component {
             <BadgeFront
               type="Attendee"
               firstName="John"
-              lastName="Doe"
+              lastName="Longsurname-Anotherlongone"
               twitter="johndoe"
               company="John Doe Enterprises"
               username="johnno"

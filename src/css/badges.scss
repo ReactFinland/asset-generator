@@ -81,7 +81,7 @@ body {
     left: 50%;
     width: 1mm;
     height: 1mm;
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(151, 54, 54, 0.35);
     border-radius: 50%;
     content: "";
   }
@@ -140,18 +140,29 @@ body {
 
 .logo {
   position: relative;
-  margin: 0.5cm 1cm -0.5cm;
+  margin: 0.75cm 1cm -0.25cm;
   width: calc(100% - 2cm);
 }
 
 .content {
   position: relative;
   margin: 0;
-  padding: 0.5cm 1cm;
+  margin-left: 0.2cm;
+  margin-right: 0.2cm;
+  padding: 1.25cm 0.5cm;
   background-color: $bgColor;
-  height: 11.9cm;
+  height: 7.5cm;
   clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
   z-index: 1;
+}
+h2 {
+  font-size: 150% !important;
+}
+
+h2,
+h3,
+p {
+  text-align: center;
 }
 
 .name {
@@ -252,6 +263,7 @@ h3.twitter {
 
 .sponsorsList {
   width: 120%;
+  margin-top: 1cm;
   margin-left: -0.75cm;
   text-align: center;
 }

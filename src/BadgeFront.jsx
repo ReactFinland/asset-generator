@@ -12,35 +12,21 @@ const BadgeFront = ({
   lastName,
   twitter,
   company,
-  conference: {
-    goldSponsors = [],
-    silverSponsors = [],
-    bronzeSponsors = []
-  } = {}
+  conference: { goldSponsors = [] } = {}
 }) => (
   <section className={styles[type]}>
     <img src={Logo} alt="GraphQL Finland 2018" className={styles.logo} />
     <div className={styles.content}>
-      {twitter && <h3 className={styles.twitter}>@{twitter}</h3>}
       <h2 className={styles.name}>
         <span className={styles.firstName}>
           {firstName} {lastName}
         </span>
       </h2>
+      {twitter && <h3 className={styles.twitter}>@{twitter}</h3>}
       {company && <p className={styles.company}>{company}</p>}
       <div className={styles.goldSponsors}>
         <section className={styles.sponsorsList}>
           <Contacts items={goldSponsors} render={Sponsor} />
-        </section>
-      </div>
-      <div className={styles.silverSponsors}>
-        <section className={styles.sponsorsList}>
-          <Contacts items={silverSponsors} render={Sponsor} />
-        </section>
-      </div>
-      <div className={styles.bronzeSponsors}>
-        <section className={styles.sponsorsList}>
-          <Contacts items={bronzeSponsors} render={Sponsor} />
         </section>
       </div>
     </div>
@@ -65,12 +51,6 @@ export default connect(
   query RootQuery($conferenceId: ID!) {
     conference(id: $conferenceId) {
       goldSponsors {
-        ...SponsorFragment
-      }
-      silverSponsors {
-        ...SponsorFragment
-      }
-      bronzeSponsors {
         ...SponsorFragment
       }
     }
