@@ -150,7 +150,7 @@ class Badges extends React.Component {
               activeClassName={styles.dropzoneHover}
             >
               {tickets.length === 0 ? (
-                <p>Drop ti.to CSV file here...</p>
+                <p>Drop conference CSV file here...</p>
               ) : (
                 <p>Found {tickets.length} tickets!</p>
               )}
