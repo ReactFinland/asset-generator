@@ -186,6 +186,7 @@ class Badges extends React.Component {
               company="John Doe Enterprises"
               username="johnno"
               password="swordfish"
+              type="speaker"
             />
             <BadgeFront
               type="Attendee"
@@ -195,6 +196,27 @@ class Badges extends React.Component {
               company="John Doe Enterprises"
               username="johnno"
               password="swordfish"
+              type="organizer"
+            />
+            <BadgeFront
+              type="Attendee"
+              firstName="John"
+              lastName="Doe"
+              twitter="johndoe"
+              company="John Doe Enterprises"
+              username="johnno"
+              password="swordfish"
+              type="attendee"
+            />
+            <BadgeFront
+              type="Attendee"
+              firstName="John"
+              lastName="Doe"
+              twitter="johndoe"
+              company="John Doe Enterprises"
+              username="johnno"
+              password="swordfish"
+              type="sponsor"
             />
           </div>
         )}

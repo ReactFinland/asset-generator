@@ -40,7 +40,7 @@ body {
 }
 
 .dummyBadges {
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
 }
@@ -138,33 +138,6 @@ body {
   }
 }
 
-.logo {
-  position: relative;
-  margin: 0.75cm 1cm -0.25cm;
-  width: calc(100% - 2cm);
-}
-
-.content {
-  position: relative;
-  margin: 0;
-  margin-left: 0.2cm;
-  margin-right: 0.2cm;
-  padding: 1.25cm 0.5cm;
-  background-color: $bgColor;
-  height: 7.5cm;
-  clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
-  z-index: 1;
-}
-h2 {
-  font-size: 150% !important;
-}
-
-h2,
-h3,
-p {
-  text-align: center;
-}
-
 .name {
   font-size: 225%;
 }
@@ -176,12 +149,6 @@ p {
 
 .lastName {
   display: block;
-}
-
-h3.twitter {
-  font-family: "Finlandica Bold", sans-serif;
-  margin-top: 0.5em !important;
-  font-size: 125% !important;
 }
 
 .company {
@@ -261,6 +228,37 @@ h3.twitter {
   color: $secondaryColor;
 }
 
+.logo {
+  position: relative;
+  margin: 0.75cm 1cm 0cm;
+  width: calc(100% - 2cm);
+}
+.content {
+  position: relative;
+  margin: 0;
+  margin-left: 0.2cm;
+  margin-right: 0.2cm;
+  padding: 2cm 0.5cm;
+  background-color: $bgColor;
+  height: 5cm;
+  clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
+  z-index: 1;
+}
+h2 {
+  font-size: 150% !important;
+}
+h3.twitter {
+  font-family: "Finlandica Bold", sans-serif;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+  font-size: 125% !important;
+}
+
+h2,
+h3,
+p {
+  text-align: center;
+}
 .sponsorsList {
   position: absolute;
   width: 100%;
@@ -286,4 +284,21 @@ h3.twitter {
 .bronzeSponsors .sponsorsLogo {
   max-height: 1.2cm;
   max-width: 2.5cm;
+}
+
+.sponsor {
+  background: #5297e9;
+}
+.speaker {
+  background: black;
+}
+.organizer {
+  background: #2b702b;
+}
+.typeText {
+  text-transform: capitalize;
+  color: white;
+  position: absolute;
+  bottom: 0.5cm;
+  left: 1cm;
 }
