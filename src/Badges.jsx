@@ -7,7 +7,9 @@ import { flatten, chunk } from "lodash";
 
 import styles from "./css/badges.scss";
 import BadgeFront from "./BadgeFront.jsx";
-import BadgeBack from "./BadgeBack.jsx";
+
+// TODO: Add a toggle for this
+//import BadgeBack from "./BadgeBack.jsx";
 
 const emptyBadges = 10;
 const emptyOrgBadges = 5;
@@ -77,7 +79,7 @@ const SplitPage = ({ tickets }) => {
       </section>
       <section className={"sheet " + styles.page}>
         {reverse.map((ticket, idx) => (
-          <BadgeBack {...ticket} key={"back-" + idx} />
+          <BadgeFront {...ticket} key={"back-" + idx} />
         ))}
       </section>
     </div>
@@ -185,7 +187,7 @@ class Badges extends React.Component {
               username="johnno"
               password="swordfish"
             />
-            <BadgeBack
+            <BadgeFront
               type="Attendee"
               firstName="John"
               lastName="Doe"
