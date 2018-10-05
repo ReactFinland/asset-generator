@@ -262,10 +262,11 @@ h3.twitter {
 }
 
 .sponsorsList {
-  width: 120%;
-  margin-top: 1cm;
-  margin-left: -0.75cm;
+  position: absolute;
+  width: 100%;
+  margin-left: -0.45cm;
   text-align: center;
+  bottom: 1cm;
 }
 .sponsorsLogo {
   margin: 0.2cm;
