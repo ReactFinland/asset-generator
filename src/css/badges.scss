@@ -138,25 +138,24 @@ body {
   max-width: 2.5cm;
 }
 .schedule {
-  display: flex !important;
-  flex-flow: row;
-  flex-wrap: wrap;
+  margin-top: 1cm;
+  display: grid;
+  grid-template-columns: 0.75fr 2fr 0.75fr 2fr;
+  column-gap: 0.5cm;
+  row-gap: 0.25cm;
   width: 100%;
   overflow: visible;
 }
 .scheduleTitle {
-  flex: 0 0 20%;
   overflow: hidden;
 }
 .scheduleDefinition {
-  flex: 0 0 80%;
-  margin-left: auto;
+  margin-left: 0;
   text-align: left;
   display: inline-block;
   text-overflow: ellipsis;
-  white-space: nowrap;
   overflow: hidden;
-  font-size: 65%;
+  font-size: 80%;
 }
 .sessionIntervalTitle {
   display: inline;
