@@ -34,6 +34,9 @@ const getType = type => {
     case "Volunteer": {
       return "volunteer";
     }
+    case "Speaker": {
+      return "speaker";
+    }
     default:
       return "attendee";
   }
