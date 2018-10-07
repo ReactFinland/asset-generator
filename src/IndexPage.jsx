@@ -1,9 +1,9 @@
 import React from "react";
 
-const Index = () => (
+const IndexPage = () => (
   <div>
     <a href="/badges">Generate badges</a>
   </div>
 );
 
-export default Index;
+export default IndexPage;

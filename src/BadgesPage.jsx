@@ -112,7 +112,7 @@ const readFileContents = file => {
   });
 };
 
-class Badges extends React.Component {
+class BadgesPage extends React.Component {
   state = {
     tickets: [],
     passwords: []
@@ -239,4 +239,4 @@ class Badges extends React.Component {
   }
 }
 
-export default Badges;
+export default BadgesPage;

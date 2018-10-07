@@ -5,7 +5,7 @@ module.exports = () => ({
   output: "build",
   // layout: () => require("./layouts/SiteBody").default,
   paths: {
-    "/": () => require("./src/Index.jsx").default,
-    badges: () => require("./src/Badges.jsx").default
+    "/": () => require("./src/IndexPage.jsx").default,
+    badges: () => require("./src/BadgesPage.jsx").default
   }
 });
