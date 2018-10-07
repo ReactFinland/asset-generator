@@ -1,9 +1,14 @@
 import React from "react";
 
 const IndexPage = () => (
-  <div>
-    <a href="/badges">Generate badges</a>
-  </div>
+  <ul>
+    <li>
+      <a href="/badges">Generate badges</a>
+    </li>
+    <li>
+      <a href="/schedule">Generate a schedule poster</a>
+    </li>
+  </ul>
 );
 
 export default IndexPage;
