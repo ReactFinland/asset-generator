@@ -144,15 +144,25 @@ body {
 }
 .schedule {
   margin-top: 1cm;
-  display: grid;
-  grid-template-columns: 0.75fr 2fr 0.75fr 2fr;
-  column-gap: 0.5cm;
-  row-gap: 0.25cm;
   width: 100%;
-  overflow: visible;
+  display: flex;
+  flex-flow: column wrap;
+  height: 12cm;
+}
+.scheduleItemContainer {
+  width: 50%;
+  margin-bottom: 0.2cm;
+  display: grid;
+  grid-template-columns: 0.75fr 2fr;
+}
+.scheduleItemContainer dt,
+.scheduleItemContainer dd {
+  display: inline;
 }
 .scheduleTitle {
   overflow: hidden;
+  font-size: 140%;
+  font-family: monospace;
 }
 .scheduleDefinition {
   margin-left: 0;
@@ -160,7 +170,6 @@ body {
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 80%;
 }
 .sessionIntervalTitle {
   display: inline;

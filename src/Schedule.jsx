@@ -6,24 +6,29 @@ import styles from "./css/badges.scss";
 const Schedule = ({ intervals }) =>
   intervals ? (
     <dl className={styles.schedule}>
-      {intervals.map(({ begin, end, sessions }, i) => [
-        <dt
-          className={`${styles.scheduleTitle} ${styles[getType(sessions)]}`}
-          key={`dt-${i}`}
+      {intervals.map(({ begin, end, sessions }, i) => (
+        <div
+          key={`schedule-container-${i}`}
+          className={styles.scheduleItemContainer}
         >
-          {begin}–{end}
-        </dt>,
-        <dd className={styles.scheduleDefinition} key={`dd-${i}`}>
-          {sessions.map(({ title, type, speakers }, i) => (
-            <SessionTitle
-              key={i}
-              title={title}
-              type={type}
-              speakers={speakers}
-            />
-          ))}
-        </dd>
-      ])}
+          <dt
+            className={`${styles.scheduleTitle} ${styles[getType(sessions)]}`}
+            key={`dt-${i}`}
+          >
+            {begin}–{end}
+          </dt>
+          <dd className={styles.scheduleDefinition} key={`dd-${i}`}>
+            {sessions.map(({ title, type, speakers }, i) => (
+              <SessionTitle
+                key={i}
+                title={title}
+                type={type}
+                speakers={speakers}
+              />
+            ))}
+          </dd>
+        </div>
+      ))}
     </dl>
   ) : null;
 Schedule.propTypes = {
