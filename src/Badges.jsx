@@ -3,7 +3,7 @@ import "@babel/polyfill";
 import React from "react";
 import Papa from "papaparse";
 import Dropzone from "react-dropzone";
-import { flatten, chunk, trimStart, upperFirst } from "lodash";
+import { endsWith, flatten, chunk, trimStart, upperFirst } from "lodash";
 
 import styles from "./css/badges.scss";
 import BadgeFront from "./BadgeFront.jsx";
@@ -25,8 +25,14 @@ const getEmptyData = type => ({
 
 const getName = name => upperFirst(name);
 const getTwitter = twitter => trimStart(twitter, "'@");
+const isSponsor = email =>
+  ["almamedia.fi", "codento.com"].some(pattern => endsWith(email, pattern));
 
-const getType = type => {
+const getType = (type, email) => {
+  if (isSponsor(email)) {
+    return "sponsor";
+  }
+
   switch (type) {
     case "Organizer": {
       return "organizer";
@@ -59,7 +65,7 @@ const convertData = (tickets, passwords) => {
             !i["Ticket Company Name"].includes(i["Ticket Full Name"]))
             ? i["Ticket Company Name"]
             : null, // Remove company if it's same as the name
-        type: getType(i["Ticket"] || i["Ticket Type"]),
+        type: getType(i["Ticket"] || i["Ticket Type"], i["Email"]),
         twitter: getTwitter(i["Twitter"]) || "" // i["Tags"] ? `@${i["Tags"]}` : null
       }))
       // .concat(Array(emptyOrgBadges).fill(getEmptyData("Volunteer")))
