@@ -173,12 +173,17 @@ body {
 }
 
 .badge {
+  background-image: linear-gradient(
+      rgb(243, 153, 153),
+      rgba($secondaryColor, 0.9)
+    ),
+    url("../assets/wave.svg");
+  background-size: cover;
   position: relative;
   margin: auto;
   padding: 0;
   width: 10.2cm;
   height: 14.4cm;
-  background: $secondaryColor;
   overflow: hidden;
 
   &::after {
@@ -335,13 +340,16 @@ p {
 }
 
 .sponsor {
-  background: #298bff;
+  background-image: linear-gradient(rgb(243, 153, 153), rgba(#298bff, 0.9)),
+    url("../assets/wave.svg");
 }
 .speaker {
-  background: black;
+  background-image: linear-gradient(rgb(243, 153, 153), rgba(black, 0.9)),
+    url("../assets/wave.svg");
 }
 .organizer {
-  background: #3fc83f;
+  background-image: linear-gradient(rgb(243, 153, 153), rgba(#3fc83f, 0.9)),
+    url("../assets/wave.svg");
 }
 .typeText {
   text-transform: capitalize;
