@@ -76,12 +76,17 @@ body {
 }
 
 .scheduleContainer {
+  background-image: linear-gradient(
+      rgb(243, 153, 153),
+      rgba($secondaryColor, 0.9)
+    ),
+    url("../assets/wave.svg");
+  background-size: cover;
   position: relative;
   margin: auto;
   padding: 0;
   width: 28.8cm;
   height: 20.4cm;
-  background: $secondaryColor;
   overflow: hidden;
 }
 .scheduleLogo {
