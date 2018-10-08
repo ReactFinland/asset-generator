@@ -151,9 +151,10 @@ body {
 }
 .scheduleItemContainer {
   width: 50%;
-  margin-bottom: 0.2cm;
+  margin-bottom: 0.25cm;
   display: grid;
   grid-template-columns: 0.75fr 2fr;
+  font-size: 83%;
 }
 .scheduleItemContainer dt,
 .scheduleItemContainer dd {
@@ -161,7 +162,7 @@ body {
 }
 .scheduleTitle {
   overflow: hidden;
-  font-size: 140%;
+  font-size: 180%;
   font-family: monospace;
 }
 .scheduleDefinition {

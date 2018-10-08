@@ -58,7 +58,7 @@ const SessionTitle = ({ title, type, speakers }) => (
     ) : (
       <>
         <ScheduleIcon type={type} />
-        {title}
+        {title} {speakers && `- ${speakers[0].name}`}
       </>
     )}
   </h3>
