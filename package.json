@@ -31,7 +31,8 @@
     "lodash": "^4.17.11",
     "papaparse": "^4.6.0",
     "react": "^16.5.2",
-    "react-dropzone": "^5.1.1"
+    "react-dropzone": "^5.1.1",
+    "react-easy-emoji": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.0",

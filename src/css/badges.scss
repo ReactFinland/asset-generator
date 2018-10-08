@@ -147,15 +147,15 @@ body {
   max-width: 2.5cm;
 }
 .schedule {
-  margin-top: 1cm;
+  margin-top: 1.5cm;
   width: 100%;
   display: flex;
   flex-flow: column wrap;
-  height: 12cm;
+  height: 11.7cm;
 }
 .scheduleItemContainer {
   width: 50%;
-  margin-bottom: 0.2cm;
+  margin-bottom: 0.25cm;
   display: grid;
   grid-template-columns: 0.7fr 1.9fr;
   font-size: 83%;
@@ -165,6 +165,7 @@ body {
   display: inline;
 }
 .scheduleTitle {
+  margin-top: -0.7mm;
   overflow: hidden;
   font-size: 180%;
   font-family: monospace;
