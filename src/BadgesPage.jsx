@@ -11,8 +11,8 @@ import BadgeFront from "./BadgeFront.jsx";
 // TODO: Add a toggle for this
 //import BadgeBack from "./BadgeBack.jsx";
 
-const emptyBadges = 10;
-const emptyOrgBadges = 5;
+const emptyBadges = 30;
+const emptyOrgBadges = 10;
 const badgesPerPage = 4; // Should be even!
 
 const getEmptyData = type => ({
@@ -48,35 +48,31 @@ const getType = (type, email) => {
   }
 };
 
-const convertData = (tickets, passwords) => {
+const convertData = tickets => {
   const validTickets = tickets.filter(t => !t["Void Status"]);
   // Ensure all pages are filled with badges
+  // TODO: Validate this math. It's not correct anymore.
   const emptyBadgesFill =
-    badgesPerPage -
-    ((validTickets.length + emptyBadges + emptyOrgBadges) % badgesPerPage);
-  return (
-    validTickets
-      .map(i => ({
-        firstName: getName(i["Ticket First Name"] || i["First Name"]),
-        lastName: getName(i["Ticket Last Name"] || i["Last Name"]),
-        company:
-          i["Ticket Company Name"] &&
-          (!i["Ticket Full Name"].includes(i["Ticket Company Name"]) &&
-            !i["Ticket Company Name"].includes(i["Ticket Full Name"]))
-            ? i["Ticket Company Name"]
-            : null, // Remove company if it's same as the name
-        type: getType(i["Ticket"] || i["Ticket Type"], i["Email"]),
-        twitter: getTwitter(i["Twitter"]) || "" // i["Tags"] ? `@${i["Tags"]}` : null
-      }))
-      // .concat(Array(emptyOrgBadges).fill(getEmptyData("Volunteer")))
-      .concat(
-        Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("Attendee"))
-      )
-  );
-  /*.map((ticket, idx) => ({
-      ...ticket,
-      ...passwords[idx]
-    }))*/
+    badgesPerPage - ((validTickets.length + emptyBadges) % badgesPerPage);
+
+  return validTickets
+    .map(i => ({
+      firstName: getName(i["Ticket First Name"] || i["First Name"]),
+      lastName: getName(i["Ticket Last Name"] || i["Last Name"]),
+      company:
+        i["Ticket Company Name"] &&
+        (!i["Ticket Full Name"].includes(i["Ticket Company Name"]) &&
+          !i["Ticket Company Name"].includes(i["Ticket Full Name"]))
+          ? i["Ticket Company Name"]
+          : null, // Remove company if it's same as the name
+      type: getType(i["Ticket"] || i["Ticket Type"], i["Email"]),
+      twitter: getTwitter(i["Twitter"]) || "" // i["Tags"] ? `@${i["Tags"]}` : null
+    }))
+    .concat(Array(emptyBadges + emptyOrgBadges).fill(getEmptyData("organizer")))
+    .concat(Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("sponsor")))
+    .concat(
+      Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("attendee"))
+    );
 };
 
 // To render badges from 2 sides we need to change the order of them on pages
@@ -139,6 +135,7 @@ class BadgesPage extends React.Component {
   renderBadges(tickets, passwords) {
     const all = convertData(tickets, passwords);
     const pages = chunk(all, badgesPerPage);
+
     return (
       <div className={styles.grid}>
         {pages.map((pageTickets, idx) => (
