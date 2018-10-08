@@ -105,6 +105,10 @@ body {
   clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
   z-index: 1;
 }
+.specialSession {
+  font-family: "Finlandica Bold";
+  display: inline;
+}
 .sponsorsLogo {
   margin: 0.2cm;
   width: auto;
@@ -153,7 +157,7 @@ body {
   width: 50%;
   margin-bottom: 0.25cm;
   display: grid;
-  grid-template-columns: 0.75fr 2fr;
+  grid-template-columns: 0.7fr 1.9fr;
   font-size: 83%;
 }
 .scheduleItemContainer dt,
@@ -162,7 +166,7 @@ body {
 }
 .scheduleTitle {
   overflow: hidden;
-  font-size: 180%;
+  font-size: 150%;
   font-family: monospace;
 }
 .scheduleDefinition {

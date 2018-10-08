@@ -52,9 +52,9 @@ const SessionTitle = ({ title, type, speakers }) => (
     type === "PARTY" ||
     type === "LUNCH" ||
     type === "BREAKFAST" ? (
-      <>
+      <div className={styles.specialSession}>
         <ScheduleIcon type={type} />
-      </>
+      </div>
     ) : (
       <>
         <ScheduleIcon type={type} />
