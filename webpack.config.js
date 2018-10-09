@@ -1,5 +1,4 @@
 const path = require("path");
-const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const merge = require("webpack-merge");
 
@@ -105,12 +104,7 @@ function buildConfig() {
         }
       ]
     },
-    plugins: [
-      new MiniCssExtractPlugin(),
-      new webpack.DefinePlugin({
-        window: `false`
-      })
-    ]
+    plugins: [new MiniCssExtractPlugin()]
   };
 }
 
