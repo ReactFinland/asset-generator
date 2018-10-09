@@ -1,11 +1,11 @@
 .sponsorsContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
   margin-left: 0.5cm;
   margin-right: 0.5cm;
 }
 .sponsorsLogo {
-  text-align: center;
   vertical-align: middle;
   max-height: 2cm;
   max-width: 2cm;
@@ -14,10 +14,15 @@
 .goldSponsors {
 }
 .goldSponsors .sponsorsLogo {
+  max-height: 3cm;
+  max-width: 3cm;
+  margin-top: 0cm;
 }
 .silverSponsors {
 }
 .silverSponsors .sponsorsLogo {
+  max-height: 1.75cm;
+  max-width: 1.75cm;
 }
 .bronzeSponsors {
 }
