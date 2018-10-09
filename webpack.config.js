@@ -6,8 +6,9 @@ const merge = require("webpack-merge");
 module.exports = env => {
   switch (env) {
     case "build":
-    case "interactive":
       return merge(commonConfig(), buildConfig());
+    case "interactive":
+      return merge(commonConfig(), buildConfig(), interactiveConfig());
     default:
       return merge(commonConfig(), developmentConfig());
   }
@@ -58,8 +59,6 @@ function commonConfig() {
     resolve: {
       alias: {
         assets: path.resolve(__dirname, "assets"),
-        // XXX: interactive config bug in antwar
-        "antwar-config": path.resolve(__dirname, "antwar.config.js"),
         config: path.resolve(__dirname, "antwar.config.js"), // XXX: styleguidist
         components: path.resolve(__dirname, "components"),
         utils: path.resolve(__dirname, "utils")
@@ -112,5 +111,16 @@ function buildConfig() {
         window: `false`
       })
     ]
+  };
+}
+
+function interactiveConfig() {
+  return {
+    resolve: {
+      alias: {
+        // XXX: interactive config bug in antwar
+        "antwar-config": path.resolve(__dirname, "antwar.config.js")
+      }
+    }
   };
 }
