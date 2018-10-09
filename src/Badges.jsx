@@ -1,3 +1,5 @@
+import "@babel/polyfill"; // Needed for interactive bit to work
+
 import React from "react";
 import Papa from "papaparse";
 import Dropzone from "react-dropzone";

@@ -1,6 +1,6 @@
 module.exports = () => ({
-  conferenceId: "graphql-finland-2018",
-  apiUrl: "https://api.react-finland.fi/graphql",
+  // conferenceId: "graphql-finland-2018", TODO
+  // apiUrl: "", TODO
   // apiUrl: "http://localhost:3333/graphql",
   output: "build",
   // layout: () => require("./layouts/SiteBody").default,

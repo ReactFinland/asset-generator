@@ -1,6 +1,5 @@
 import React from "react";
 import { request } from "graphql-request";
-import config from "antwar-config";
 
 function connect(query, propsToVars) {
   return component => {
@@ -26,16 +25,13 @@ function connect(query, propsToVars) {
         }
       }
       fetchData() {
-        let variables = {
-          conferenceId: config.conferenceId
-        };
-        if (propsToVars) {
-          variables = {
-            ...variables,
-            ...propsToVars(this.props)
-          };
-        }
-        return request(config.apiUrl, query, variables).then(data => {
+        // TODO: Push to context/elsewhere
+        const apiUrl = "https://api.react-finland.fi/graphql";
+
+        return request(apiUrl, query, {
+          ...(propsToVars ? propsToVars(this.props) : {}),
+          conferenceId: "graphql-finland-2018" // TODO: decouple
+        }).then(data => {
           queryCache = data;
 
           return { data };

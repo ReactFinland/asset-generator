@@ -109,12 +109,5 @@ function buildConfig() {
 }
 
 function interactiveConfig() {
-  return {
-    resolve: {
-      alias: {
-        // XXX: interactive config bug in antwar
-        "antwar-config": path.resolve(__dirname, "antwar.config.js")
-      }
-    }
-  };
+  return {};
 }
