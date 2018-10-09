@@ -1,0 +1,113 @@
+@import "./variables.scss";
+
+.scheduleContainer {
+  background-image: linear-gradient(
+      rgb(243, 153, 153),
+      rgba($secondaryColor, 0.9)
+    ),
+    url("../assets/wave.svg");
+  background-size: cover;
+  position: relative;
+  margin: auto;
+  padding: 0;
+  width: 28.8cm;
+  height: 20.4cm;
+  overflow: hidden;
+}
+.scheduleLogo {
+  position: relative;
+  margin: 0.5cm 0.9cm 0cm;
+  width: 5cm;
+}
+.scheduleContent {
+  position: relative;
+  margin: 0;
+  margin-left: 0.5cm;
+  margin-right: 0.5cm;
+  padding: 0.25cm 0.5cm;
+  background-color: $bgColor;
+  height: 13.5cm;
+  clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
+  z-index: 1;
+}
+.specialSession {
+  font-family: "Finlandica Bold";
+  display: inline;
+}
+.sponsorsLogo {
+  margin: 0.2cm;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+}
+.goldSponsors {
+  position: absolute;
+  bottom: 0.25cm;
+  left: 2cm;
+}
+.goldSponsors .sponsorsLogo {
+  max-height: 3cm;
+  max-width: 5cm;
+  margin-bottom: 0.5cm;
+}
+.silverSponsors {
+  position: absolute;
+  bottom: 1.25cm;
+  text-align: center;
+  width: 100%;
+}
+.silverSponsors .sponsorsLogo {
+  max-height: 1.5cm;
+  max-width: 1.5cm;
+}
+.bronzeSponsors {
+  position: absolute;
+  bottom: 0.5cm;
+  right: 2.5cm;
+  max-width: 10cm;
+  text-align: right;
+}
+.bronzeSponsors .sponsorsLogo {
+  max-height: 1.2cm;
+  max-width: 2.5cm;
+}
+.schedule {
+  margin-top: 1.5cm;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  height: 11.7cm;
+}
+.scheduleItemContainer {
+  width: 50%;
+  margin-bottom: 0.25cm;
+  display: grid;
+  grid-template-columns: 0.7fr 1.9fr;
+  font-size: 83%;
+}
+.scheduleItemContainer dt,
+.scheduleItemContainer dd {
+  display: inline;
+}
+.scheduleTitle {
+  margin-top: -0.7mm;
+  overflow: hidden;
+  font-size: 180%;
+  font-family: monospace;
+}
+.scheduleDefinition {
+  margin-left: 0;
+  text-align: left;
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.sessionIntervalTitle {
+  display: inline;
+}
+.breakfast,
+.coffee_break,
+.party,
+.lunch {
+  color: $secondaryColor;
+}

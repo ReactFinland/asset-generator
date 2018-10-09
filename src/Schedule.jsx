@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ScheduleIcon from "./ScheduleIcon.jsx";
-import styles from "./css/badges.scss";
+import styles from "./css/schedule.scss";
 
 const Schedule = ({ intervals }) =>
   intervals ? (

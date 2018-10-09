@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./css/badges.scss";
+import styles from "./css/schedule.scss";
 
 const SponsorContent = ({ src, name, props }) => (
   <img alt={name} className={styles.sponsorsLogo} src={src} {...props} />
@@ -12,7 +12,7 @@ SponsorContent.propTypes = {
   props: PropTypes.object
 };
 
-const Sponsor = ({ name, about, social, image, logoProps }) => (
+const Sponsor = ({ name, image, logoProps }) => (
   <SponsorContent src={image.url} name={name} props={logoProps} />
 );
 Sponsor.propTypes = {

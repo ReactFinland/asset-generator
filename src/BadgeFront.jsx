@@ -1,7 +1,5 @@
 import React from "react";
 import connect from "./connect";
-import Contacts from "./Contacts.jsx";
-import Sponsor from "./Sponsor.jsx";
 
 import Logo from "./assets/logo.svg";
 import styles from "./css/badges.scss";

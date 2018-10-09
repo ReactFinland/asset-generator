@@ -4,7 +4,7 @@ import Contacts from "./Contacts.jsx";
 import Sponsor from "./Sponsor.jsx";
 import Schedule from "./Schedule.jsx";
 import Logo from "./assets/logo.svg";
-import styles from "./css/badges.scss";
+import styles from "./css/schedule.scss";
 
 const SchedulePage = ({
   schedule,
