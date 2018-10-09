@@ -3,15 +3,10 @@
 require("@babel/register");
 
 // Needed by generators
-require("@babel/polyfill");
+require("@babel/polyfill/noConflict");
 
 const antwar = require("antwar");
 const environment = process.argv[2];
-
-/*console.log(
-  require.resolve("./antwar.config"),
-  require.resolve("./webpack.config")
-);*/
 
 antwar[environment]({
   environment,
