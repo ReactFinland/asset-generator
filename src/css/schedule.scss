@@ -24,16 +24,59 @@
   margin: 0;
   margin-left: 0.5cm;
   margin-right: 0.5cm;
-  padding: 0.25cm 0.5cm;
+  padding-left: 0.25cm;
+  padding-top: 0.25cm;
+  padding-right: 0cm;
+  padding-bottom: 0.25cm;
   background-color: $bgColor;
   height: 13.5cm;
   clip-path: polygon(0 0, 100% 1cm, 100% 100%, 0 calc(100% - 1cm));
   z-index: 1;
 }
 .specialSession {
-  font-family: "Finlandica Bold";
   display: inline;
 }
+
+.schedule {
+  margin-top: 1cm;
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  height: 11.7cm;
+}
+.scheduleItemContainer {
+  width: 50%;
+  margin-bottom: 0.25cm;
+  display: grid;
+  grid-template-columns: 0.55fr 1.9fr;
+  font-size: 83%;
+}
+.scheduleItemContainer dt,
+.scheduleItemContainer dd {
+  display: inline;
+}
+.scheduleTitle {
+  overflow: hidden;
+  font-size: 150%;
+  font-family: monospace;
+}
+.scheduleDefinition {
+  font-size: 99%;
+  margin-left: 0cm;
+  text-align: left;
+  overflow: hidden;
+  line-height: 1.45;
+}
+.sessionIntervalTitle {
+  display: inline;
+}
+.breakfast,
+.coffee_break,
+.party,
+.lunch {
+  color: $secondaryColor;
+}
+
 .sponsorsLogo {
   margin: 0.2cm;
   width: auto;
@@ -70,44 +113,4 @@
 .bronzeSponsors .sponsorsLogo {
   max-height: 1.2cm;
   max-width: 2.5cm;
-}
-.schedule {
-  margin-top: 1.5cm;
-  width: 100%;
-  display: flex;
-  flex-flow: column wrap;
-  height: 11.7cm;
-}
-.scheduleItemContainer {
-  width: 50%;
-  margin-bottom: 0.25cm;
-  display: grid;
-  grid-template-columns: 0.7fr 1.9fr;
-  font-size: 83%;
-}
-.scheduleItemContainer dt,
-.scheduleItemContainer dd {
-  display: inline;
-}
-.scheduleTitle {
-  margin-top: -0.7mm;
-  overflow: hidden;
-  font-size: 180%;
-  font-family: monospace;
-}
-.scheduleDefinition {
-  margin-left: 0;
-  text-align: left;
-  display: inline-block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.sessionIntervalTitle {
-  display: inline;
-}
-.breakfast,
-.coffee_break,
-.party,
-.lunch {
-  color: $secondaryColor;
 }

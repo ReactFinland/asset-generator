@@ -53,12 +53,12 @@ const SessionTitle = ({ title, type, speakers }) => (
     type === "LUNCH" ||
     type === "BREAKFAST" ? (
       <div className={styles.specialSession}>
-        <ScheduleIcon type={type} /> {title}
+        {title} <ScheduleIcon type={type} />
       </div>
     ) : (
       <>
-        <ScheduleIcon type={type} /> {title}{" "}
-        {speakers && `- ${speakers[0].name}`}
+        {title} {speakers && `- ${speakers[0].name}`}{" "}
+        <ScheduleIcon type={type} />
       </>
     )}
   </h3>
