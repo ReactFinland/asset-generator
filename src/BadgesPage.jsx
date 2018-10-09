@@ -11,8 +11,6 @@ import BadgeFront from "./BadgeFront.jsx";
 // TODO: Add a toggle for this
 //import BadgeBack from "./BadgeBack.jsx";
 
-const emptyBadges = 30;
-const emptyOrgBadges = 10;
 const badgesPerPage = 4; // Should be even!
 
 const getEmptyData = type => ({
@@ -50,12 +48,7 @@ const getType = (type, email) => {
 
 const convertData = tickets => {
   const validTickets = tickets.filter(t => !t["Void Status"]);
-  // Ensure all pages are filled with badges
-  // TODO: Validate this math. It's not correct anymore.
-  const emptyBadgesFill =
-    badgesPerPage - ((validTickets.length + emptyBadges) % badgesPerPage);
-
-  return validTickets
+  const ret = validTickets
     .map(i => ({
       firstName: getName(i["Ticket First Name"] || i["First Name"]),
       lastName: getName(i["Ticket Last Name"] || i["Last Name"]),
@@ -68,11 +61,16 @@ const convertData = tickets => {
       type: getType(i["Ticket"] || i["Ticket Type"], i["Email"]),
       twitter: getTwitter(i["Twitter"]) || "" // i["Tags"] ? `@${i["Tags"]}` : null
     }))
-    .concat(Array(emptyBadges + emptyOrgBadges).fill(getEmptyData("organizer")))
-    .concat(Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("sponsor")))
-    .concat(
-      Array(emptyBadges + emptyBadgesFill).fill(getEmptyData("attendee"))
-    );
+    .concat(Array(10).fill(getEmptyData("organizer")))
+    .concat(Array(20).fill(getEmptyData("sponsor")))
+    .concat(Array(30).fill(getEmptyData("attendee")));
+
+  // Ensure all pages are filled with badges
+  return ret.concat(
+    Array(badgesPerPage - (ret.length % badgesPerPage)).fill(
+      getEmptyData("attendee")
+    )
+  );
 };
 
 // To render badges from 2 sides we need to change the order of them on pages
