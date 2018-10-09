@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./css/schedule.scss";
+import styles from "./css/sponsors.scss";
 
 const SponsorContent = ({ src, name, props }) => (
   <img alt={name} className={styles.sponsorsLogo} src={src} {...props} />
