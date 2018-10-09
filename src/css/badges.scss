@@ -76,8 +76,8 @@ body {
 
 .badge {
   background-image: linear-gradient(
-      rgb(243, 153, 153),
-      rgba($secondaryColor, 0.9)
+      $secondaryColor,
+      rgba($secondaryColor, 0.65)
     ),
     url("../assets/wave.svg");
   background-size: cover;
@@ -242,15 +242,15 @@ p {
 }
 
 .sponsor {
-  background-image: linear-gradient(rgb(243, 153, 153), rgba(#298bff, 0.9)),
+  background-image: linear-gradient(#298bff, rgba(#298bff, 0.6)),
     url("../assets/wave.svg");
 }
 .speaker {
-  background-image: linear-gradient(rgb(243, 153, 153), rgba(black, 0.9)),
+  background-image: linear-gradient(#d01a1a, rgba(#d01a1a, 0.39)),
     url("../assets/wave.svg");
 }
 .organizer {
-  background-image: linear-gradient(rgb(243, 153, 153), rgba(#3fc83f, 0.9)),
+  background-image: linear-gradient(#6d0b4d, rgba(#6d0b4d, 0.65)),
     url("../assets/wave.svg");
 }
 .typeText {
