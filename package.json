@@ -7,6 +7,7 @@
   "scripts": {
     "build": "node ./antwar.bootstrap.js build",
     "start": "node ./antwar.bootstrap.js develop",
+    "start:csv": "node ./api.js",
     "lint": "eslint . --ignore-path .gitignore --fix",
     "test": "npm run lint"
   },
