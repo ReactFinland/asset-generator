@@ -5,7 +5,7 @@ import SessionTitle from "../components/SessionTitle.jsx";
 import TitlePage from "../components/TitlePage.jsx";
 import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
-import location from "./location";
+import root from "window-or-global";
 
 class PresentationContainer extends React.Component {
   componentDidMount() {
@@ -17,14 +17,19 @@ class PresentationContainer extends React.Component {
   onKeydown = ({ key }) => {
     if (key === "ArrowRight") {
       const { schedule } = this.props;
-
-      location.hash = `#${Math.min(
-        parseInt(location.hash.slice(1)) + 1,
+      const hash = `#${Math.min(
+        parseInt(root.location.hash.slice(1)) + 1,
         schedule.intervals.length
       )}`;
+
+      root.location = `${location.origin}${location.pathname}${hash}`;
+      root.location.reload(); // Needed for hash to work - it would be better to go through React state here!
     }
     if (key === "ArrowLeft") {
-      location.hash = `#${Math.max(parseInt(location.hash.slice(1)) - 1, 0)}`;
+      const hash = `#${Math.max(parseInt(root.location.hash.slice(1)) - 1, 0)}`;
+
+      root.location = `${location.origin}${location.pathname}${hash}`;
+      root.location.reload(); // Needed for hash to work - it would be better to go through React state here!
     }
   };
 
@@ -62,11 +67,11 @@ function getPresentation(schedule, index) {
 }
 
 function getSlide() {
-  if (!location) {
+  if (!root.location) {
     return 0;
   }
 
-  return location.hash ? parseInt(location.hash.slice(1)) : 0;
+  return root.location.hash ? parseInt(root.location.hash.slice(1)) : 0;
 }
 
 export default connect(
