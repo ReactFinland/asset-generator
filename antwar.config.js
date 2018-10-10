@@ -7,7 +7,6 @@ module.exports = () => ({
     "/": () => require("./pages/IndexPage.jsx").default,
     badges: () => require("./pages/BadgesPage.jsx").default,
     schedule: () => require("./pages/SchedulePage.jsx").default,
-    title: () => require("./pages/TitlePage.jsx").default,
     presentation: () => require("./pages/PresentationPage.jsx").default
   }
 });

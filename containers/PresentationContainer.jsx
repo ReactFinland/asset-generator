@@ -2,22 +2,31 @@ import React from "react";
 import connect from "./connect";
 import SponsorsContainer from "./SponsorsContainer.jsx";
 import SessionTitle from "../components/SessionTitle.jsx";
+import TitlePage from "../components/TitlePage.jsx";
 import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
 
-const PresentationContainer = ({ schedule }) => (
-  <div className={styles.presentationContainer}>
-    <img
-      src={logo}
-      alt="GraphQL Finland 2018"
-      className={styles.presentationLogo}
-    />
-    <div className={styles.presentationContent}>
-      <SessionTitle {...getPresentation(schedule, location.hash.slice(1))} />
+const PresentationContainer = ({ schedule }) => {
+  const slide = parseInt(location.hash.slice(1));
+
+  if (slide === 0) {
+    return <TitlePage />;
+  }
+
+  return (
+    <div className={styles.presentationContainer}>
+      <img
+        src={logo}
+        alt="GraphQL Finland 2018"
+        className={styles.presentationLogo}
+      />
+      <div className={styles.presentationContent}>
+        <SessionTitle {...getPresentation(schedule, slide - 1)} />
+      </div>
+      <SponsorsContainer />
     </div>
-    <SponsorsContainer />
-  </div>
-);
+  );
+};
 
 function getPresentation(schedule, index) {
   if (!schedule) {
