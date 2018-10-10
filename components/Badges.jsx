@@ -1,7 +1,7 @@
 import "@babel/polyfill"; // Needed for interactive bit to work
 import React from "react";
 import { chunk } from "lodash";
-import styles from "./css/badges.scss";
+import styles from "./badges.scss";
 import BadgeFront from "./BadgeFront.jsx";
 import SplitPage from "./SplitPage.jsx";
 

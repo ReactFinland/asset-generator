@@ -5,8 +5,8 @@ module.exports = () => ({
   output: "build",
   // layout: () => require("./layouts/SiteBody").default,
   paths: {
-    "/": () => require("./src/IndexPage.jsx").default,
-    badges: () => require("./src/BadgesPage.jsx").default,
-    schedule: () => require("./src/SchedulePage.jsx").default
+    "/": () => require("./pages/IndexPage.jsx").default,
+    badges: () => require("./pages/BadgesPage.jsx").default,
+    schedule: () => require("./pages/SchedulePage.jsx").default
   }
 });

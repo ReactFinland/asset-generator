@@ -1,8 +1,7 @@
 import React from "react";
 import Contacts from "./Contacts.jsx";
 import Sponsor from "./Sponsor.jsx";
-import styles from "./css/sponsors.scss";
-import connect from "./connect";
+import styles from "./sponsors.scss";
 
 const Sponsors = ({
   conference: {
@@ -30,39 +29,4 @@ const Sponsors = ({
   </div>
 );
 
-const sponsorFragment = `
-  fragment SponsorFragment on Contact {
-    name
-    social {
-      homepage
-    }
-    about
-    image {
-      url
-    }
-  }
-`;
-
-// TODO: Implement a sponsor query to the root
-export default connect(
-  `
-  query PageQuery($conferenceId: ID!) {
-    conference(id: $conferenceId) {
-      goldSponsors {
-        ...SponsorFragment
-      }
-      silverSponsors {
-        ...SponsorFragment
-      }
-      bronzeSponsors {
-        ...SponsorFragment
-      }
-    }
-  }
-
-  ${sponsorFragment}
-`,
-  {
-    apiUrl: "https://api.react-finland.fi/graphql"
-  }
-)(Sponsors);
+export default Sponsors;

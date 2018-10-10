@@ -1,5 +1,5 @@
 import connect from "./connect";
-import Badges from "./Badges.jsx";
+import Badges from "../components/Badges.jsx";
 
 export default connect(
   `

@@ -1,8 +1,6 @@
 import React from "react";
-import connect from "./connect";
-
-import Logo from "./assets/logo.svg";
-import styles from "./css/badges.scss";
+import styles from "./badges.scss";
+import Logo from "../assets/logo.svg";
 
 const BadgeFront = ({ type, firstName, lastName, twitter, company }) => (
   <section className={`${styles.badge} ${styles[type]}`}>
@@ -20,30 +18,4 @@ const BadgeFront = ({ type, firstName, lastName, twitter, company }) => (
   </section>
 );
 
-const sponsorFragment = `
-  fragment SponsorFragment on Contact {
-    name
-    social {
-      homepage
-    }
-    about
-    image {
-      url
-    }
-  }
-`;
-
-export default connect(
-  `
-  query RootQuery($conferenceId: ID!) {
-    conference(id: $conferenceId) {
-      goldSponsors {
-        ...SponsorFragment
-      }
-    }
-  }
-
-  ${sponsorFragment}
-`,
-  () => ({ day: "2018-10-19" })
-)(BadgeFront);
+export default BadgeFront;

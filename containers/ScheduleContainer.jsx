@@ -1,9 +1,9 @@
 import React from "react";
 import connect from "./connect";
-import Sponsors from "./Sponsors.jsx";
-import Schedule from "./Schedule.jsx";
-import Logo from "./assets/logo.svg";
-import styles from "./css/schedule.scss";
+import SponsorsContainer from "../containers/SponsorsContainer.jsx";
+import Schedule from "../components/Schedule.jsx";
+import Logo from "../assets/logo.svg";
+import styles from "./schedule.scss";
 
 const ScheduleContainer = ({ schedule }) => (
   <div className={styles.scheduleContainer}>
@@ -14,9 +14,9 @@ const ScheduleContainer = ({ schedule }) => (
     />
     <h1 className={styles.scheduleHeader}>Schedule</h1>
     <div className={styles.scheduleContent}>
-      <Schedule intervals={schedule && schedule.intervals} />
+      <Schedule intervals={schedule && schedule.intervals} styles={styles} />
     </div>
-    <Sponsors />
+    <SponsorsContainer />
   </div>
 );
 

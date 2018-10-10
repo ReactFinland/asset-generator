@@ -21,7 +21,11 @@ function commonConfig() {
         {
           test: /\.js(x)$/,
           use: "babel-loader",
-          include: [path.join(__dirname, "src")]
+          include: [
+            path.join(__dirname, "components"),
+            path.join(__dirname, "containers"),
+            path.join(__dirname, "pages")
+          ]
         },
         {
           test: /\.woff(2)?|\.ttf$|\.eot$/,

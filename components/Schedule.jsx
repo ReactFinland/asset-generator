@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ScheduleIcon from "./ScheduleIcon.jsx";
-import styles from "./css/schedule.scss";
 
-const Schedule = ({ intervals }) =>
+const Schedule = ({ intervals, styles }) =>
   intervals ? (
     <dl className={styles.schedule}>
       {intervals.map(({ begin, end, sessions }, i) => (
@@ -24,6 +23,7 @@ const Schedule = ({ intervals }) =>
                 title={title}
                 type={type}
                 speakers={speakers}
+                styles={styles}
               />
             ))}
           </dd>
@@ -32,7 +32,8 @@ const Schedule = ({ intervals }) =>
     </dl>
   ) : null;
 Schedule.propTypes = {
-  intervals: PropTypes.array
+  intervals: PropTypes.array,
+  styles: PropTypes.object
 };
 
 // TODO: If there are multiple sessions, how to resolve type? -> mixed?
@@ -46,7 +47,7 @@ const titlePropTypes = {
   speakers: PropTypes.array
 };
 
-const SessionTitle = ({ title, type, speakers }) => (
+const SessionTitle = ({ title, type, speakers, styles }) => (
   <h3 className={styles.sessionIntervalTitle}>
     {type === "COFFEE_BREAK" ||
     type === "PARTY" ||
@@ -63,6 +64,6 @@ const SessionTitle = ({ title, type, speakers }) => (
     )}
   </h3>
 );
-SessionTitle.propTypes = titlePropTypes;
+SessionTitle.propTypes = { ...titlePropTypes, styles: PropTypes.object };
 
 export default Schedule;
