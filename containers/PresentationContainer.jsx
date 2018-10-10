@@ -5,6 +5,7 @@ import SessionTitle from "../components/SessionTitle.jsx";
 import TitlePage from "../components/TitlePage.jsx";
 import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
+import location from "./location";
 
 class PresentationContainer extends React.Component {
   componentDidMount() {
@@ -29,7 +30,7 @@ class PresentationContainer extends React.Component {
 
   render() {
     const { schedule } = this.props;
-    const slide = parseInt(location ? location.hash.slice(1) : 0);
+    const slide = getSlide();
 
     if (slide === 0) {
       return <TitlePage />;
@@ -58,6 +59,14 @@ function getPresentation(schedule, index) {
 
   // XXX: Better with lodash get as otherwise this can crash with bad data
   return schedule.intervals[index].sessions[0];
+}
+
+function getSlide() {
+  if (!location) {
+    return 0;
+  }
+
+  return location.hash ? parseInt(location.hash.slice(1)) : 0;
 }
 
 export default connect(

@@ -1,6 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const merge = require("webpack-merge");
+const webpack = require("webpack");
 
 module.exports = env => {
   switch (env) {
@@ -76,7 +77,8 @@ function developmentConfig() {
           ]
         }
       ]
-    }
+    },
+    plugins: [new webpack.DefinePlugin({ IS_SERVER: `"false"` })]
   };
 }
 
@@ -97,7 +99,10 @@ function buildConfig() {
         }
       ]
     },
-    plugins: [new MiniCssExtractPlugin()]
+    plugins: [
+      new MiniCssExtractPlugin(),
+      new webpack.DefinePlugin({ IS_SERVER: `"true"` })
+    ]
   };
 }
 
