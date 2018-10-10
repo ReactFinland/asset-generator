@@ -6,27 +6,50 @@ import TitlePage from "../components/TitlePage.jsx";
 import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
 
-const PresentationContainer = ({ schedule }) => {
-  const slide = parseInt(location.hash.slice(1));
-
-  if (slide === 0) {
-    return <TitlePage />;
+class PresentationContainer extends React.Component {
+  componentDidMount() {
+    document.addEventListener("keydown", this.onKeydown, false);
   }
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.onKeydown, false);
+  }
+  onKeydown = ({ key }) => {
+    if (key === "ArrowRight") {
+      const { schedule } = this.props;
 
-  return (
-    <div className={styles.presentationContainer}>
-      <img
-        src={logo}
-        alt="GraphQL Finland 2018"
-        className={styles.presentationLogo}
-      />
-      <div className={styles.presentationContent}>
-        <SessionTitle {...getPresentation(schedule, slide - 1)} />
+      location.hash = `#${Math.min(
+        parseInt(location.hash.slice(1)) + 1,
+        schedule.intervals.length
+      )}`;
+    }
+    if (key === "ArrowLeft") {
+      location.hash = `#${Math.max(parseInt(location.hash.slice(1)) - 1, 0)}`;
+    }
+  };
+
+  render() {
+    const { schedule } = this.props;
+    const slide = parseInt(location.hash.slice(1));
+
+    if (slide === 0) {
+      return <TitlePage />;
+    }
+
+    return (
+      <div className={styles.presentationContainer}>
+        <img
+          src={logo}
+          alt="GraphQL Finland 2018"
+          className={styles.presentationLogo}
+        />
+        <div className={styles.presentationContent}>
+          <SessionTitle {...getPresentation(schedule, slide - 1)} />
+        </div>
+        <SponsorsContainer />
       </div>
-      <SponsorsContainer />
-    </div>
-  );
-};
+    );
+  }
+}
 
 function getPresentation(schedule, index) {
   if (!schedule) {
