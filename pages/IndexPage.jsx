@@ -8,6 +8,9 @@ const IndexPage = () => (
     <li>
       <a href="/schedule">Generate a schedule poster</a>
     </li>
+    <li>
+      <a href="/title">Generate a title slide</a>
+    </li>
   </ul>
 );
 

@@ -1,0 +1,13 @@
+@import "../variables.scss";
+
+body {
+  background: white;
+}
+
+.titleContainer {
+}
+.titleYear {
+  color: $primaryColor;
+  font-size: 1000% !important;
+  margin-top: -2cm;
+}
