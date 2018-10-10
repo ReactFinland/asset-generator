@@ -4,7 +4,10 @@ import Interactive from "antwar-interactive";
 import BadgesContainer from "../containers/BadgesContainer.jsx";
 
 const BadgesPage = () => (
-  <Interactive id="src/BadgesContainer.jsx" component={BadgesContainer} />
+  <Interactive
+    id="containers/BadgesContainer.jsx"
+    component={BadgesContainer}
+  />
 );
 
 export default BadgesPage;

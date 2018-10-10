@@ -4,7 +4,7 @@ import PresentationContainer from "../containers/PresentationContainer.jsx";
 
 const PresentationPage = () => (
   <Interactive
-    id="src/PresentationContainer.jsx"
+    id="containers/PresentationContainer.jsx"
     component={PresentationContainer}
   />
 );
