@@ -35,17 +35,6 @@ function commonConfig() {
           ]
         },
         {
-          test: /\.woff(2)?|\.ttf$|\.eot$/,
-          use: [
-            {
-              loader: "url-loader",
-              options: {
-                limit: 5000
-              }
-            }
-          ]
-        },
-        {
           test: /\.(gif|jpg|png|svg)$/,
           use: "file-loader"
         },
