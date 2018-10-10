@@ -1,7 +1,7 @@
 import React from "react";
 import { request } from "graphql-request";
 
-function connect(query, propsToVars) {
+function connect(query, { apiUrl, propsToVars }) {
   return component => {
     let queryCache = {};
 
@@ -25,9 +25,6 @@ function connect(query, propsToVars) {
         }
       }
       fetchData() {
-        // TODO: Push to context/elsewhere
-        const apiUrl = "https://api.react-finland.fi/graphql";
-
         return request(apiUrl, query, {
           ...(propsToVars ? propsToVars(this.props) : {}),
           conferenceId: "graphql-finland-2018" // TODO: decouple

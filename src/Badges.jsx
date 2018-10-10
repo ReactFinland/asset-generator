@@ -9,7 +9,7 @@ import SplitPage from "./SplitPage.jsx";
 //import BadgeBack from "./BadgeBack.jsx";
 
 function getBadgeData(tickets, badgesPerPage) {
-  const ret = chunk(tickets, badgesPerPage)
+  let ret = tickets
     .concat(Array(10).fill(getEmptyData("organizer")))
     .concat(Array(20).fill(getEmptyData("sponsor")))
     .concat(Array(30).fill(getEmptyData("attendee")));
@@ -32,13 +32,16 @@ function getEmptyData(type) {
   };
 }
 
+const badgesPerPage = 4;
 const Badges = ({ tickets }) => (
   <section>
-    {tickets.length > 0 ? (
+    {tickets && tickets.length > 0 ? (
       <div className={styles.grid}>
-        {getBadgeData(tickets, 4).map((pageTickets, idx) => (
-          <SplitPage tickets={pageTickets} key={idx} />
-        ))}
+        {chunk(getBadgeData(tickets, badgesPerPage), badgesPerPage).map(
+          (pageTickets, idx) => (
+            <SplitPage tickets={pageTickets} key={idx} />
+          )
+        )}
       </div>
     ) : (
       <div className={styles.dummyBadges}>

@@ -61,5 +61,8 @@ export default connect(
   }
 
   ${sponsorFragment}
-`
+`,
+  {
+    apiUrl: "https://api.react-finland.fi/graphql"
+  }
 )(Sponsors);

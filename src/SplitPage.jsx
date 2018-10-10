@@ -4,7 +4,7 @@ import BadgeFront from "./BadgeFront.jsx";
 import styles from "./css/badges.scss";
 
 // To render badges from 2 sides we need to change the order of them on pages
-const SplitPage = ({ tickets }) => {
+const SplitPage = ({ tickets = [] }) => {
   const pairs = chunk(tickets, 2);
   const reverse = flatten(pairs.map(pair => [pair[1], pair[0]]));
 

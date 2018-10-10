@@ -22,30 +22,33 @@ const ScheduleContainer = ({ schedule }) => (
 
 export default connect(
   `
-  query PageQuery($conferenceId: ID!, $day: String!) {
-    schedule(conferenceId: $conferenceId, day: $day) {
-      day
-      description
-      intervals {
-        begin
-        end
-        sessions {
-          type
-          interval {
-            begin
-            end
-          }
-          title
+query PageQuery($conferenceId: ID!, $day: String!) {
+  schedule(conferenceId: $conferenceId, day: $day) {
+    day
+    description
+    intervals {
+      begin
+      end
+      sessions {
+        type
+        interval {
+          begin
+          end
+        }
+        title
 
-          ... on Talk {
-            speakers {
-              name
-            }
+        ... on Talk {
+          speakers {
+            name
           }
         }
       }
     }
   }
+}
 `,
-  () => ({ day: "2018-10-19" })
+  {
+    apiUrl: "https://api.react-finland.fi/graphql",
+    propsToVars: () => ({ day: "2018-10-19" })
+  }
 )(ScheduleContainer);
