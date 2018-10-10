@@ -1,8 +1,10 @@
 import "@babel/polyfill";
 import React from "react";
 import Interactive from "antwar-interactive";
-import Badges from "./Badges.jsx";
+import BadgesContainer from "./BadgesContainer.jsx";
 
-const BadgesPage = () => <Interactive id="src/Badges.jsx" component={Badges} />;
+const BadgesPage = () => (
+  <Interactive id="src/BadgesContainer.jsx" component={BadgesContainer} />
+);
 
 export default BadgesPage;
