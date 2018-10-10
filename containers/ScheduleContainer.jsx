@@ -2,13 +2,13 @@ import React from "react";
 import connect from "./connect";
 import SponsorsContainer from "../containers/SponsorsContainer.jsx";
 import Schedule from "../components/Schedule.jsx";
-import Logo from "../assets/logo.svg";
+import logo from "../assets/logo.svg";
 import styles from "./schedule.scss";
 
 const ScheduleContainer = ({ schedule }) => (
   <div className={styles.scheduleContainer}>
     <img
-      src={Logo}
+      src={logo}
       alt="GraphQL Finland 2018"
       className={styles.scheduleLogo}
     />

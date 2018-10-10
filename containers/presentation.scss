@@ -1,0 +1,19 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.presentationContainer {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  align-items: center;
+  min-height: 100vh;
+}
+.presentationLogo {
+  max-width: 20%;
+}
+.presentationContent {
+  text-align: center;
+  font-size: 400%;
+}
