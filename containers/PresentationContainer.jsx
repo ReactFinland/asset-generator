@@ -8,6 +8,9 @@ import styles from "./presentation.scss";
 import root from "window-or-global";
 
 class PresentationContainer extends React.Component {
+  state = {
+    slide: getSlide()
+  };
   componentDidMount() {
     document.addEventListener("keydown", this.onKeydown, false);
   }
@@ -17,25 +20,28 @@ class PresentationContainer extends React.Component {
   onKeydown = ({ key }) => {
     if (key === "ArrowRight") {
       const { schedule } = this.props;
-      const hash = `#${Math.min(
+      const nextSlide = Math.min(
         parseInt(root.location.hash.slice(1)) + 1,
         schedule.intervals.length
-      )}`;
+      );
 
-      root.location = `${location.origin}${location.pathname}${hash}`;
-      root.location.reload(); // Needed for hash to work - it would be better to go through React state here!
+      root.location = `${location.origin}${location.pathname}#${nextSlide}`;
+      this.setState({ slide: nextSlide });
     }
     if (key === "ArrowLeft") {
-      const hash = `#${Math.max(parseInt(root.location.hash.slice(1)) - 1, 0)}`;
+      const previousSlide = Math.max(
+        parseInt(root.location.hash.slice(1)) - 1,
+        0
+      );
 
-      root.location = `${location.origin}${location.pathname}${hash}`;
-      root.location.reload(); // Needed for hash to work - it would be better to go through React state here!
+      root.location = `${location.origin}${location.pathname}#${previousSlide}`;
+      this.setState({ slide: previousSlide });
     }
   };
 
   render() {
     const { schedule } = this.props;
-    const slide = getSlide();
+    const { slide } = this.state;
 
     if (slide === 0) {
       return <TitlePage />;
