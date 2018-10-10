@@ -1,4 +1,3 @@
-import "@babel/polyfill"; // Needed for interactive bit to work
 import React from "react";
 import { chunk } from "lodash";
 import styles from "./badges.scss";
