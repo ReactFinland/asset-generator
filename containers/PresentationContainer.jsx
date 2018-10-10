@@ -29,7 +29,7 @@ class PresentationContainer extends React.Component {
 
   render() {
     const { schedule } = this.props;
-    const slide = parseInt(location.hash.slice(1));
+    const slide = parseInt(location ? location.hash.slice(1) : 0);
 
     if (slide === 0) {
       return <TitlePage />;
