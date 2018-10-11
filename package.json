@@ -35,7 +35,6 @@
     "react": "^16.5.2",
     "react-easy-emoji": "^1.2.0",
     "react-swipeable-views": "^0.13.0",
-    "react-swipeable-views-utils": "^0.13.0",
     "window-or-global": "^1.0.1"
   },
   "devDependencies": {
