@@ -4,12 +4,16 @@ import styles from "./title.scss";
 
 const TitlePage = () => (
   <div className={styles.titleContainer}>
-    <img
-      className={styles.titleLogo}
-      src={coloredLogo}
-      title="GraphQL Finland 2018"
-    />
-    <h2 className={styles.titleYear}>2018</h2>
+    <div className={styles.logoContainer}>
+      <img
+        className={styles.titleLogo}
+        src={coloredLogo}
+        title="GraphQL Finland 2018"
+      />
+    </div>
+    <div className={styles.titleContainer}>
+      <h2 className={styles.titleYear}>2018</h2>
+    </div>
   </div>
 );
 
