@@ -16,7 +16,7 @@ class PresentationContainer extends React.Component {
     super(props);
 
     this.state = {
-      slide: props.schedule ? parseInt(location.hash.slice(1)) : 0
+      slide: parseInt(location.hash.slice(1))
     };
   }
   componentDidMount() {
@@ -58,7 +58,7 @@ class PresentationContainer extends React.Component {
       <SwipeableViews
         animateTransitions={false}
         enableMouseEvents
-        index={slide}
+        index={schedule ? slide : 0}
         onChangeIndex={index => {
           root.location = `${location.origin}${location.pathname}#${index}`;
 
