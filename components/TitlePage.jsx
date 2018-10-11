@@ -11,7 +11,7 @@ const TitlePage = () => (
         title="GraphQL Finland 2018"
       />
     </div>
-    <div className={styles.titleContainer}>
+    <div className={styles.yearContainer}>
       <h2 className={styles.titleYear}>2018</h2>
     </div>
   </div>
