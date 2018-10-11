@@ -10,4 +10,4 @@ To load CSV, place the file to the project root as **tickets.csv** and run `npm 
 
 ## Credits
 
-The badge generator is based on [ReasonConf](https://github.com/ReasonVienna/reason-conf) one.
+The badge generator is based on [the ReasonConf one](https://github.com/ReasonVienna/reason-conf) by [@okonet](https://github.com/okonet).
