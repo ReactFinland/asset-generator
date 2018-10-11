@@ -1,5 +1,6 @@
 import React from "react";
 import Swipe from "react-swipe-component";
+import Observer from "react-intersection-observer";
 import connect from "./connect";
 import SponsorsContainer from "./SponsorsContainer.jsx";
 import ScheduleIcon from "../components/ScheduleIcon.jsx";
@@ -41,9 +42,7 @@ class PresentationContainer extends React.Component {
       0
     );
 
-    root.location = `${root.location.origin}${
-      root.location.pathname
-    }#${previousSlide}`;
+    this.setUrlHash(previousSlide);
     this.setState({ slide: previousSlide });
     this.scrollToSlide(previousSlide);
   };
@@ -56,9 +55,7 @@ class PresentationContainer extends React.Component {
       schedule.intervals.length
     );
 
-    root.location = `${root.location.origin}${
-      root.location.pathname
-    }#${nextSlide}`;
+    this.setUrlHash(nextSlide);
     this.setState({ slide: nextSlide });
     this.scrollToSlide(nextSlide);
   };
@@ -67,6 +64,10 @@ class PresentationContainer extends React.Component {
     root.document
       .getElementsByClassName(`slide-${slide}`)[0]
       .scrollIntoView({ behavior: "smooth" });
+  }
+
+  setUrlHash(slide) {
+    root.location = `${root.location.origin}${root.location.pathname}#${slide}`;
   }
 
   render() {
@@ -78,60 +79,71 @@ class PresentationContainer extends React.Component {
         onSwipedUp={this.moveToNextSlide}
         onSwipedDown={this.moveToPreviousSlide}
       >
-        <Slides schedule={schedule} />
+        <Slides schedule={schedule} onSlideVisible={this.setUrlHash} />
       </Swipe>
     );
   }
 }
 
-function Slides({ schedule }) {
+function Slides({ schedule, onSlideVisible }) {
+  function onSlideChange(slide) {
+    return inView => {
+      if (inView) {
+        onSlideVisible(slide);
+      }
+    };
+  }
+
   return (
     <>
       <div className={`${styles.presentationContainer} slide-0`}>
-        <TitlePage />
+        <Observer onChange={onSlideChange(0)}>
+          <TitlePage />
+        </Observer>
       </div>
       {schedule ? (
         schedule.intervals
           .map(interval => interval.sessions[0])
           .map((session, index) => (
-            <div
-              className={`${styles.presentationContainer} slide-${index + 1}`}
-              key={index}
-            >
-              <header className={styles.presentationHeader}>
-                <div className={styles.presentationLogoContainer}>
-                  <img
-                    src={logo}
-                    alt="GraphQL Finland 2018"
-                    className={styles.presentationLogo}
-                  />
-                </div>
-                <div />
-                {session.speakers && (
-                  <div className={styles.speakerImageContainer}>
+            <Observer key={index} onChange={onSlideChange(index)}>
+              <div
+                className={`${styles.presentationContainer} slide-${index + 1}`}
+              >
+                <header className={styles.presentationHeader}>
+                  <div className={styles.presentationLogoContainer}>
                     <img
-                      className={styles.speakerImage}
-                      src={session.speakers[0].image.url}
-                      alt={session.speakers[0].name}
+                      src={logo}
+                      alt="GraphQL Finland 2018"
+                      className={styles.presentationLogo}
                     />
                   </div>
-                )}
-              </header>
-              <main className={styles.presentationContent}>
-                <SessionTitle
-                  className={styles.presentationTitle}
-                  {...session}
-                />
-                {session.interval && (
-                  <h4 className={styles.presentationInterval}>
-                    {session.interval.begin} - {session.interval.end}
-                  </h4>
-                )}
-              </main>
-              <footer className={styles.presentationFooter}>
-                <SponsorsContainer />
-              </footer>
-            </div>
+                  <div />
+                  {session.speakers && (
+                    <div className={styles.speakerImageContainer}>
+                      <img
+                        className={styles.speakerImage}
+                        src={session.speakers[0].image.url}
+                        alt={session.speakers[0].name}
+                      />
+                    </div>
+                  )}
+                </header>
+                <main className={styles.presentationContent}>
+                  <SessionTitle
+                    className={styles.presentationTitle}
+                    {...session}
+                  />
+                  {session.interval && (
+                    <h4 className={styles.presentationInterval}>
+                      {session.interval.begin} - {session.interval.end}
+                    </h4>
+                  )}
+                </main>
+                <footer className={styles.presentationFooter}>
+                  <SponsorsContainer />
+                </footer>
+              </div>
+            </Observer>
           ))
       ) : (
         <React.Fragment />
