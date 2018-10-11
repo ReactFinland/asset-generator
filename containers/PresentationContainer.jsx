@@ -8,6 +8,8 @@ import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
 import root from "window-or-global";
 
+require("viewport-units-buggyfill").init();
+
 class PresentationContainer extends React.Component {
   state = {
     slide: getSlide()
