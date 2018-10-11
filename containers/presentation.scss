@@ -40,11 +40,20 @@ body {
 
 .presentationContent {
   font-size: 400%;
-  margin-left: 2cm;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 .presentationInterval {
   margin-top: 1cm;
   margin-bottom: 1cm;
+  text-align: center;
+}
+.speakerTitle {
+  margin-bottom: 1cm;
+  font-size: 90%;
+}
+.speakerName {
+  font-size: 70%;
 }
 
 .presentationFooter {

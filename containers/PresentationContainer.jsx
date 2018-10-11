@@ -3,7 +3,7 @@ import SwipeableViews from "react-swipeable-views";
 import { bindKeyboard } from "react-swipeable-views-utils";
 import connect from "./connect";
 import SponsorsContainer from "./SponsorsContainer.jsx";
-import SessionTitle from "../components/SessionTitle.jsx";
+import ScheduleIcon from "../components/ScheduleIcon.jsx";
 import TitlePage from "../components/TitlePage.jsx";
 import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
@@ -63,6 +63,30 @@ const PresentationContainer = ({ schedule }) => (
       <React.Fragment />
     )}
   </KeyboardSwipeableViews>
+);
+
+const SessionTitle = ({ className, title, type, speakers }) => (
+  <h3 className={className}>
+    {type === "COFFEE_BREAK" ||
+    type === "PARTY" ||
+    type === "LUNCH" ||
+    type === "BREAKFAST" ? (
+      <div className={styles.specialSession}>
+        {title} <ScheduleIcon type={type} />
+      </div>
+    ) : (
+      <>
+        <div className={styles.speakerTitle}>{title}</div>
+        {speakers ? (
+          <span className={styles.speakerName}>
+            {speakers[0].name} <ScheduleIcon type={type} />
+          </span>
+        ) : (
+          <ScheduleIcon type={type} />
+        )}
+      </>
+    )}
+  </h3>
 );
 
 export default connect(
