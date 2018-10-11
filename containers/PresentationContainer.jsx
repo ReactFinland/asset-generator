@@ -22,19 +22,21 @@ const PresentationContainer = ({ schedule }) => (
       <TitlePage />
     </div>
     {schedule ? (
-      schedule.intervals.map((interval, index) => (
-        <div className={styles.presentationContainer} key={index}>
-          <img
-            src={logo}
-            alt="GraphQL Finland 2018"
-            className={styles.presentationLogo}
-          />
-          <div className={styles.presentationContent}>
-            <SessionTitle {...interval.sessions[0]} />
+      schedule.intervals
+        .map(interval => interval.sessions[0])
+        .map((session, index) => (
+          <div className={styles.presentationContainer} key={index}>
+            <img
+              src={logo}
+              alt="GraphQL Finland 2018"
+              className={styles.presentationLogo}
+            />
+            <div className={styles.presentationContent}>
+              <SessionTitle {...session} />
+            </div>
+            <SponsorsContainer />
           </div>
-          <SponsorsContainer />
-        </div>
-      ))
+        ))
     ) : (
       <React.Fragment />
     )}
