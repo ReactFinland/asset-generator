@@ -36,7 +36,6 @@
     "react-easy-emoji": "^1.2.0",
     "react-intersection-observer": "^6.2.3",
     "react-swipe-component": "^2.1.0",
-    "viewport-units-buggyfill": "^0.6.2",
     "window-or-global": "^1.0.1"
   },
   "devDependencies": {

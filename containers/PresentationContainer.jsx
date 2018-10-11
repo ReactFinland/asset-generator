@@ -9,10 +9,6 @@ import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
 import root from "window-or-global";
 
-if (root.location) {
-  require("viewport-units-buggyfill").init();
-}
-
 class PresentationContainer extends React.Component {
   state = {
     slide: getSlide()
@@ -91,7 +87,7 @@ function Slides({ schedule, onSlideVisible }) {
 
   return (
     <>
-      <div className={`${styles.presentationContainer} slide-0`}>
+      <div className={`${styles.titlePageContainer} slide-0`}>
         <Observer onChange={onSlideChange(0)}>
           <TitlePage />
         </Observer>
