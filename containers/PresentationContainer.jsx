@@ -9,6 +9,11 @@ import logo from "../assets/colored-logo.svg";
 import styles from "./presentation.scss";
 import root from "window-or-global";
 
+// TODO: Lazy load as in https://www.npmjs.com/package/react-intersection-observer#polyfill
+if (root.location) {
+  require("intersection-observer");
+}
+
 class PresentationContainer extends React.Component {
   state = {
     slide: getSlide()
