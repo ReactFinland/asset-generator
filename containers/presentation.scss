@@ -1,5 +1,9 @@
 @import "../variables.scss";
 
+h1,
+h2,
+h3,
+h4,
 html,
 body {
   padding: 0;
@@ -44,12 +48,10 @@ body {
   margin-right: 1em;
 }
 .presentationInterval {
-  margin-top: 1cm;
-  margin-bottom: 1cm;
+  margin-top: 0.5em;
   text-align: center;
 }
 .speakerTitle {
-  margin-bottom: 1cm;
   font-size: 90%;
 }
 .speakerName {
@@ -57,6 +59,4 @@ body {
 }
 
 .presentationFooter {
-  align-self: end;
-  margin-bottom: 3em;
 }
