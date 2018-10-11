@@ -34,12 +34,16 @@ body {
   clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
 }
 
+.titlePageContainer,
+.presentationContainer {
+  min-height: 100vh;
+  max-height: 100vh;
+  align-items: center;
+}
+
 .presentationContainer {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
-  align-items: center;
-  min-height: 100%;
-  max-height: 100%;
 }
 
 .presentationContent {
