@@ -10,15 +10,8 @@ import root from "window-or-global";
 
 class PresentationContainer extends React.Component {
   state = {
-    slide: 0
+    slide: getSlide()
   };
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      slide: parseInt(root.location.hash.slice(1))
-    };
-  }
   componentDidMount() {
     document.addEventListener("keydown", this.onKeydown, false);
   }
@@ -120,6 +113,14 @@ class PresentationContainer extends React.Component {
       </SwipeableViews>
     );
   }
+}
+
+function getSlide() {
+  if (!root.location) {
+    return 0;
+  }
+
+  return root.location.hash ? parseInt(root.location.hash.slice(1)) : 0;
 }
 
 const SessionTitle = ({ className, title, type, speakers }) => (
