@@ -16,7 +16,7 @@ class PresentationContainer extends React.Component {
     super(props);
 
     this.state = {
-      slide: parseInt(location.hash.slice(1))
+      slide: parseInt(root.location.hash.slice(1))
     };
   }
   componentDidMount() {
@@ -33,7 +33,9 @@ class PresentationContainer extends React.Component {
         schedule.intervals.length
       );
 
-      root.location = `${location.origin}${location.pathname}#${nextSlide}`;
+      root.location = `${root.location.origin}${
+        root.location.pathname
+      }#${nextSlide}`;
       this.setState({ slide: nextSlide });
     }
     if (key === "ArrowLeft") {
@@ -42,7 +44,9 @@ class PresentationContainer extends React.Component {
         0
       );
 
-      root.location = `${location.origin}${location.pathname}#${previousSlide}`;
+      root.location = `${root.location.origin}${
+        root.location.pathname
+      }#${previousSlide}`;
       this.setState({ slide: previousSlide });
     }
   };
@@ -60,7 +64,9 @@ class PresentationContainer extends React.Component {
         enableMouseEvents
         index={schedule ? slide : 0}
         onChangeIndex={index => {
-          root.location = `${location.origin}${location.pathname}#${index}`;
+          root.location = `${root.location.origin}${
+            root.location.pathname
+          }#${index}`;
 
           this.setState({ slide: index });
         }}
