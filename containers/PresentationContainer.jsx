@@ -1,5 +1,5 @@
 import React from "react";
-import SwipeableViews from "react-swipeable-views";
+import Swipe from "react-swipe-component";
 import connect from "./connect";
 import SponsorsContainer from "./SponsorsContainer.jsx";
 import ScheduleIcon from "../components/ScheduleIcon.jsx";
@@ -18,101 +18,122 @@ class PresentationContainer extends React.Component {
   componentWillUnmount() {
     document.removeEventListener("keydown", this.onKeydown, false);
   }
-  onKeydown = ({ key }) => {
-    if (key === "ArrowRight") {
-      const { schedule } = this.props;
-      const nextSlide = Math.min(
-        parseInt(root.location.hash.slice(1)) + 1,
-        schedule.intervals.length
-      );
+  onKeydown = event => {
+    const { key } = event;
 
-      root.location = `${root.location.origin}${
-        root.location.pathname
-      }#${nextSlide}`;
-      this.setState({ slide: nextSlide });
+    if (key === "ArrowUp") {
+      event.preventDefault();
+      this.moveToPreviousSlide();
     }
-    if (key === "ArrowLeft") {
-      const previousSlide = Math.max(
-        parseInt(root.location.hash.slice(1)) - 1,
-        0
-      );
-
-      root.location = `${root.location.origin}${
-        root.location.pathname
-      }#${previousSlide}`;
-      this.setState({ slide: previousSlide });
+    if (key === "ArrowDown") {
+      event.preventDefault();
+      this.moveToNextSlide();
     }
   };
 
+  moveToPreviousSlide = () => {
+    const previousSlide = Math.max(
+      parseInt(root.location.hash.slice(1)) - 1,
+      0
+    );
+
+    root.location = `${root.location.origin}${
+      root.location.pathname
+    }#${previousSlide}`;
+    this.setState({ slide: previousSlide });
+    this.scrollToSlide(previousSlide);
+  };
+
+  moveToNextSlide = () => {
+    const { schedule } = this.props;
+
+    const nextSlide = Math.min(
+      parseInt(root.location.hash.slice(1)) + 1,
+      schedule.intervals.length
+    );
+
+    root.location = `${root.location.origin}${
+      root.location.pathname
+    }#${nextSlide}`;
+    this.setState({ slide: nextSlide });
+    this.scrollToSlide(nextSlide);
+  };
+
+  scrollToSlide(slide) {
+    root.document
+      .getElementsByClassName(`slide-${slide}`)[0]
+      .scrollIntoView({ behavior: "smooth" });
+  }
+
   render() {
     const { schedule } = this.props;
-    const { slide } = this.state;
 
-    // Transitions are disabled for now as the keyboard implementation of SwipeableViews
-    // doesn't work and controlling index doesn't allow work either (doesn't wait for
-    // animation to complete).
     return (
-      <SwipeableViews
-        animateTransitions={false}
-        enableMouseEvents
-        index={schedule ? slide : 0}
-        onChangeIndex={index => {
-          root.location = `${root.location.origin}${
-            root.location.pathname
-          }#${index}`;
-
-          this.setState({ slide: index });
-        }}
+      <Swipe
+        mouseSwipe
+        onSwipedUp={this.moveToNextSlide}
+        onSwipedDown={this.moveToPreviousSlide}
       >
-        <div className={styles.presentationContainer}>
-          <TitlePage />
-        </div>
-        {schedule ? (
-          schedule.intervals
-            .map(interval => interval.sessions[0])
-            .map((session, index) => (
-              <div className={styles.presentationContainer} key={index}>
-                <header className={styles.presentationHeader}>
-                  <div className={styles.presentationLogoContainer}>
-                    <img
-                      src={logo}
-                      alt="GraphQL Finland 2018"
-                      className={styles.presentationLogo}
-                    />
-                  </div>
-                  <div />
-                  {session.speakers && (
-                    <div className={styles.speakerImageContainer}>
-                      <img
-                        className={styles.speakerImage}
-                        src={session.speakers[0].image.url}
-                        alt={session.speakers[0].name}
-                      />
-                    </div>
-                  )}
-                </header>
-                <main className={styles.presentationContent}>
-                  <SessionTitle
-                    className={styles.presentationTitle}
-                    {...session}
-                  />
-                  {session.interval && (
-                    <h4 className={styles.presentationInterval}>
-                      {session.interval.begin} - {session.interval.end}
-                    </h4>
-                  )}
-                </main>
-                <footer className={styles.presentationFooter}>
-                  <SponsorsContainer />
-                </footer>
-              </div>
-            ))
-        ) : (
-          <React.Fragment />
-        )}
-      </SwipeableViews>
+        <Slides schedule={schedule} />
+      </Swipe>
     );
   }
+}
+
+function Slides({ schedule }) {
+  return (
+    <>
+      <div className={`${styles.presentationContainer} slide-0`}>
+        <TitlePage />
+      </div>
+      {schedule ? (
+        schedule.intervals
+          .map(interval => interval.sessions[0])
+          .map((session, index) => (
+            <div
+              className={`${styles.presentationContainer} slide-${index + 1}`}
+              key={index}
+            >
+              <header className={styles.presentationHeader}>
+                <div className={styles.presentationLogoContainer}>
+                  <img
+                    src={logo}
+                    alt="GraphQL Finland 2018"
+                    className={styles.presentationLogo}
+                  />
+                </div>
+                <div />
+                {session.speakers && (
+                  <div className={styles.speakerImageContainer}>
+                    <img
+                      className={styles.speakerImage}
+                      src={session.speakers[0].image.url}
+                      alt={session.speakers[0].name}
+                    />
+                  </div>
+                )}
+              </header>
+              <main className={styles.presentationContent}>
+                <SessionTitle
+                  className={styles.presentationTitle}
+                  {...session}
+                />
+                {session.interval && (
+                  <h4 className={styles.presentationInterval}>
+                    {session.interval.begin} - {session.interval.end}
+                  </h4>
+                )}
+              </main>
+              <footer className={styles.presentationFooter}>
+                <SponsorsContainer />
+              </footer>
+            </div>
+          ))
+      ) : (
+        <React.Fragment />
+      )}
+    </>
+  );
 }
 
 function getSlide() {
