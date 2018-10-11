@@ -37,27 +37,22 @@ class PresentationContainer extends React.Component {
   };
 
   moveToPreviousSlide = () => {
-    const previousSlide = Math.max(
-      parseInt(root.location.hash.slice(1)) - 1,
-      0
-    );
-
-    this.setUrlHash(previousSlide);
-    this.setState({ slide: previousSlide });
-    this.scrollToSlide(previousSlide);
+    this.goToSlide(Math.max(parseInt(root.location.hash.slice(1)) - 1, 0));
   };
 
   moveToNextSlide = () => {
-    const { schedule } = this.props;
-
-    const nextSlide = Math.min(
-      parseInt(root.location.hash.slice(1)) + 1,
-      schedule.intervals.length
+    this.goToSlide(
+      Math.min(
+        parseInt(root.location.hash.slice(1)) + 1,
+        this.props.schedule.intervals.length
+      )
     );
+  };
 
-    this.setUrlHash(nextSlide);
-    this.setState({ slide: nextSlide });
-    this.scrollToSlide(nextSlide);
+  goToSlide = slide => {
+    this.setUrlHash(slide);
+    this.setState({ slide });
+    this.scrollToSlide(slide);
   };
 
   scrollToSlide(slide) {
