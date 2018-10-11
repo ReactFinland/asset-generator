@@ -14,6 +14,7 @@ const KeyboardSwipeableViews = bindKeyboard(SwipeableViews);
 const PresentationContainer = ({ schedule }) => (
   <KeyboardSwipeableViews
     enableMouseEvents
+    index={schedule ? parseInt(location.hash.slice(1)) : 0}
     onChangeIndex={index => {
       root.location = `${location.origin}${location.pathname}#${index}`;
     }}
@@ -26,15 +27,31 @@ const PresentationContainer = ({ schedule }) => (
         .map(interval => interval.sessions[0])
         .map((session, index) => (
           <div className={styles.presentationContainer} key={index}>
-            <img
-              src={logo}
-              alt="GraphQL Finland 2018"
-              className={styles.presentationLogo}
-            />
-            <div className={styles.presentationContent}>
+            <header className={styles.presentationHeader}>
+              <div className={styles.presentationLogoContainer}>
+                <img
+                  src={logo}
+                  alt="GraphQL Finland 2018"
+                  className={styles.presentationLogo}
+                />
+              </div>
+              <div />
+              {session.speakers && (
+                <div className={styles.speakerImageContainer}>
+                  <img
+                    className={styles.speakerImage}
+                    src={session.speakers[0].image.url}
+                    alt={session.speakers[0].name}
+                  />
+                </div>
+              )}
+            </header>
+            <main className={styles.presentationContent}>
               <SessionTitle {...session} />
-            </div>
-            <SponsorsContainer />
+            </main>
+            <footer className={styles.presentationFooter}>
+              <SponsorsContainer />
+            </footer>
           </div>
         ))
     ) : (
