@@ -5,9 +5,8 @@ const merge = require("webpack-merge");
 module.exports = env => {
   switch (env) {
     case "build":
-      return merge(commonConfig(), buildConfig());
     case "interactive":
-      return merge(commonConfig(), buildConfig(), interactiveConfig());
+      return merge(commonConfig(), buildConfig());
     default:
       return merge(commonConfig(), developmentConfig());
   }
@@ -99,8 +98,4 @@ function buildConfig() {
     },
     plugins: [new MiniCssExtractPlugin()]
   };
-}
-
-function interactiveConfig() {
-  return {};
 }
