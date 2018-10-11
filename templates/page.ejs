@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= context.title %>
+  </title>
+
+  <% for (var file of context.cssFiles) { %>
+  <link href="<%= file %>" rel="stylesheet">
+  <% } %>
+</head>
+
+<body>
+  <%- context.html %>
+
+  <% for (var script of context.jsFiles) { %>
+  <script src="<%= script %>" type="text/javascript"></script>
+  <% } %>
+</body>
+
+</html>

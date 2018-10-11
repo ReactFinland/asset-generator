@@ -1,6 +1,11 @@
+const path = require("path");
+
 module.exports = () => ({
   // conferenceId: "graphql-finland-2018", TODO
   // apiUrl: "http://localhost:3333/graphql", TODO
+  template: {
+    file: path.resolve(__dirname, "templates/page.ejs")
+  },
   output: "build",
   // layout: () => require("./layouts/SiteBody").default, TODO: drop from antwar
   paths: {
