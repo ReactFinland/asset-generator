@@ -47,7 +47,12 @@ const PresentationContainer = ({ schedule }) => (
               )}
             </header>
             <main className={styles.presentationContent}>
-              <SessionTitle {...session} />
+              <SessionTitle className={styles.presentationTitle} {...session} />
+              {session.interval && (
+                <h4 className={styles.presentationInterval}>
+                  {session.interval.begin} - {session.interval.end}
+                </h4>
+              )}
             </main>
             <footer className={styles.presentationFooter}>
               <SponsorsContainer />
