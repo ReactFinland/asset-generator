@@ -10,7 +10,7 @@ import SplitPage from "./SplitPage.jsx";
 function getBadgeData(tickets, badgesPerPage) {
   let ret = tickets
     .concat(Array(10).fill(getEmptyData("organizer")))
-    .concat(Array(20).fill(getEmptyData("sponsor")))
+    .concat(Array(15).fill(getEmptyData("sponsor")))
     .concat(Array(30).fill(getEmptyData("attendee")));
 
   // Ensure all pages are filled with badges
