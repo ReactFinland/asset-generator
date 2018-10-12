@@ -44,46 +44,54 @@ const Badges = ({ tickets }) => (
       </div>
     ) : (
       <div className={styles.dummyBadges}>
-        <BadgeFront
-          type="Attendee"
-          firstName="John"
-          lastName="Longsurname-Anotherlongone"
-          twitter="johndoe"
-          company="John Doe Enterprises"
-          username="johnno"
-          password="swordfish"
-          type="speaker"
-        />
-        <BadgeFront
-          type="Attendee"
-          firstName="John"
-          lastName="Doe"
-          twitter="johndoe"
-          company="John Doe Enterprises"
-          username="johnno"
-          password="swordfish"
-          type="organizer"
-        />
-        <BadgeFront
-          type="Attendee"
-          firstName="John"
-          lastName="Doe"
-          twitter="johndoe"
-          company="John Doe Enterprises"
-          username="johnno"
-          password="swordfish"
-          type="attendee"
-        />
-        <BadgeFront
-          type="Attendee"
-          firstName="John"
-          lastName="Doe"
-          twitter="johndoe"
-          company="John Doe Enterprises"
-          username="johnno"
-          password="swordfish"
-          type="sponsor"
-        />
+        <div>
+          <BadgeFront
+            type="Attendee"
+            firstName="John"
+            lastName="Longsurname-Anotherlongone"
+            twitter="johndoe"
+            company="John Doe Enterprises"
+            username="johnno"
+            password="swordfish"
+            type="speaker"
+          />
+        </div>
+        <div>
+          <BadgeFront
+            type="Attendee"
+            firstName="John"
+            lastName="Doe"
+            twitter="johndoe"
+            company="John Doe Enterprises"
+            username="johnno"
+            password="swordfish"
+            type="organizer"
+          />
+        </div>
+        <div>
+          <BadgeFront
+            type="Attendee"
+            firstName="John"
+            lastName="Doe"
+            twitter="johndoe"
+            company="John Doe Enterprises"
+            username="johnno"
+            password="swordfish"
+            type="attendee"
+          />
+        </div>
+        <div>
+          <BadgeFront
+            type="Attendee"
+            firstName="John"
+            lastName="Doe"
+            twitter="johndoe"
+            company="John Doe Enterprises"
+            username="johnno"
+            password="swordfish"
+            type="sponsor"
+          />
+        </div>
       </div>
     )}
   </section>
