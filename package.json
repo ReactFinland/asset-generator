@@ -1,7 +1,7 @@
 {
   "name": "asset-generator",
   "version": "0.0.0",
-  "description": "TODO",
+  "description": "React Finland asset generator",
   "main": "index.js",
   "private": true,
   "scripts": {
