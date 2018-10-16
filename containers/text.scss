@@ -1,0 +1,10 @@
+.textContent {
+  display: grid;
+  grid-template-rows: 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-size: 800%;
+}
