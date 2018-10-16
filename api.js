@@ -51,7 +51,7 @@ function convertData(tickets) {
         ? i["Ticket Company Name"]
         : null, // Remove company if it's same as the name
     type: getType(i["Ticket"] || i["Ticket Type"], i["Email"]),
-    twitter: getTwitter(i["Twitter"]) || ""
+    twitter: getTwitter(i["Twitter"] || i["What's your Twitter handle?"]) || ""
   }));
 }
 
