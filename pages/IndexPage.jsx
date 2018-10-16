@@ -14,6 +14,12 @@ const IndexPage = () => (
     <li>
       <a href="/speakers-room">Generate a speakers' room poster</a>
     </li>
+    <li>
+      <a href="/left-arrow">Generate a left arrow poster</a>
+    </li>
+    <li>
+      <a href="/right-arrow">Generate a right arrow poster</a>
+    </li>
   </ul>
 );
 
