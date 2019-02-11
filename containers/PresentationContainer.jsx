@@ -99,7 +99,11 @@ function Slides({ schedule, onSlideVisible }) {
       </div>
       {schedule ? (
         schedule.intervals
-          .map(interval => interval.sessions[0])
+          .map(interval => ({
+            ...interval.sessions[0],
+            begin: interval.begin,
+            end: interval.end
+          }))
           .map((session, index) => (
             <Observer key={index} onChange={onSlideChange(index)}>
               <div
@@ -114,12 +118,12 @@ function Slides({ schedule, onSlideVisible }) {
                     />
                   </div>
                   <div />
-                  {session.speakers && (
+                  {session.people && (
                     <div className={styles.speakerImageContainer}>
                       <img
                         className={styles.speakerImage}
-                        src={session.speakers[0].image.url}
-                        alt={session.speakers[0].name}
+                        src={session.people[0].image.url}
+                        alt={session.people[0].name}
                       />
                     </div>
                   )}
@@ -129,11 +133,12 @@ function Slides({ schedule, onSlideVisible }) {
                     className={styles.presentationTitle}
                     {...session}
                   />
-                  {session.interval && (
-                    <h4 className={styles.presentationInterval}>
-                      {session.interval.begin} - {session.interval.end}
-                    </h4>
-                  )}
+                  {session.begin &&
+                    session.end && (
+                      <h4 className={styles.presentationInterval}>
+                        {session.begin} - {session.end}
+                      </h4>
+                    )}
                 </main>
                 <footer className={styles.presentationFooter}>
                   <SponsorsContainer />
@@ -185,22 +190,17 @@ export default connect(
 query PageQuery($conferenceId: ID!, $day: String!) {
   schedule(conferenceId: $conferenceId, day: $day) {
     intervals {
+      begin
+      end
       sessions {
         type
-        interval {
-          begin
-          end
-        }
         title
-
-        ... on Talk {
-          speakers {
-            name
-            image {
-              url
-            }
-            type
+        people {
+          name
+          image {
+            url
           }
+          type
         }
       }
     }
