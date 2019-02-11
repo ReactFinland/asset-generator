@@ -31,16 +31,9 @@ query PageQuery($conferenceId: ID!, $day: String!) {
       end
       sessions {
         type
-        interval {
-          begin
-          end
-        }
         title
-
-        ... on Talk {
-          speakers {
-            name
-          }
+        people {
+          name
         }
       }
     }

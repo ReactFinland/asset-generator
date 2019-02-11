@@ -4,7 +4,7 @@ import cx from "classnames";
 import ScheduleIcon from "./ScheduleIcon.jsx";
 import styles from "./session-title.scss";
 
-const SessionTitle = ({ className, title, type, speakers }) => (
+const SessionTitle = ({ className, title, type, people }) => (
   <h3 className={cx(className, styles.sessionIntervalTitle)}>
     {type === "COFFEE_BREAK" ||
     type === "PARTY" ||
@@ -15,8 +15,7 @@ const SessionTitle = ({ className, title, type, speakers }) => (
       </div>
     ) : (
       <>
-        {title} {speakers && `- ${speakers[0].name}`}{" "}
-        <ScheduleIcon type={type} />
+        {title} {people && `- ${people[0].name}`} <ScheduleIcon type={type} />
       </>
     )}
   </h3>
@@ -25,7 +24,7 @@ const SessionTitle = ({ className, title, type, speakers }) => (
 const titlePropTypes = {
   title: PropTypes.string,
   type: PropTypes.string,
-  speakers: PropTypes.array
+  people: PropTypes.array
 };
 
 SessionTitle.propTypes = { ...titlePropTypes, styles: PropTypes.object };
